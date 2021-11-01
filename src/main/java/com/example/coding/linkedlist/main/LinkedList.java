@@ -200,4 +200,96 @@ public class LinkedList {
         int indexFromFirst = length - index;
         return getNth(indexFromFirst);
     }
+
+    public int occurrenceOfKey(int key) {
+        int count = 0;
+        Link current = first;
+
+        while (current != null) {
+            if (current.data == key)
+            {
+                count ++;
+            }
+            current = current.next;
+        }
+        return count;
+    }
+
+    /**
+     * Floyd’s Cycle-Finding Algorithm
+     */
+    public void detectLoop() {
+        //Move slow by one and fast by two... If they both meet then there is loop
+        Link slowPointer = first;
+        Link fastPointer = first;
+        int flag = 0;
+        while (slowPointer != null && fastPointer != null && fastPointer.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+
+            if (slowPointer == fastPointer) {
+                flag = 1;
+                break;
+            }
+        }
+
+        if (flag == 1) {
+            System.out.println("Loop found");
+        } else {
+            System.out.println("loop not detected");
+        }
+    }
+
+    public int loopLength(Link first) {
+        Link slowPointer = first;
+        Link fastPointer = first;
+        int flag = 0;
+        while (slowPointer != null && fastPointer != null && fastPointer.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+
+            if (slowPointer == fastPointer) {
+                return loopTraverse(slowPointer);
+            }
+        }
+        return 0;
+    }
+
+    private int loopTraverse(Link link) {
+        int count = 0;
+        Link temp = link;
+
+        while (temp.next != link) {
+            count ++;
+            temp = temp.next;
+        }
+
+        return count;
+    }
+
+    public boolean palindrome(LinkedList list) {
+        if (list.first.next == null) {
+            return true;
+        }
+
+        Link current = list.first;
+        Link previous = list.first;
+
+        while (current.next != null) {
+            previous = current;
+            current = current.next;
+        }
+
+        int firstValue = list.first.data;
+        int lastValue = current.data;
+
+        Link newFirst = list.first.next;
+
+        list.first = newFirst;
+        previous.next = null;
+        current = null;
+
+        return Boolean.logicalAnd((firstValue == lastValue), palindrome(list));
+
+    }
 }
