@@ -6,7 +6,7 @@ public class PrintRightView {
 
     public static int MAX_LEVEL = 0;
 
-    public static void printLeft(Node root, int level) {
+    public static void printRight(Node root, int level) {
         if (root == null) {
             return;
         }
@@ -16,8 +16,8 @@ public class PrintRightView {
             MAX_LEVEL = level;
         }
 
-        printLeft(root.right, level+1);
-        printLeft(root.left, level+1);
+        printRight(root.right, level+1);
+        printRight(root.left, level+1);
 
     }
 
@@ -30,7 +30,7 @@ public class PrintRightView {
         root1.right.left = new Node(6);
         root1.right.right = new Node(7);
 
-        printLeft(root1, 1);
+        printRight(root1, 1);
 
     }
 }

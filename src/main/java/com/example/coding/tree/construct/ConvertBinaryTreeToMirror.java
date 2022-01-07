@@ -1,4 +1,4 @@
-package com.example.coding.tree.check;
+package com.example.coding.tree.construct;
 
 import com.example.coding.tree.Node;
 
