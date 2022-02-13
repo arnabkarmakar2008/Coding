@@ -19,7 +19,7 @@ public class FlowerPlanting1042 {
       adjList.get(paths[ct][1]).add(paths[ct][0]);
     }
 
-    for (int ct=1; ct<=4; ct++) {
+    for (int ct=1; ct<=n; ct++) {
       if (flowers[ct] == -1) {
         Queue<Integer> queue = new LinkedList<>();
         queue.add(ct);
@@ -63,9 +63,9 @@ public class FlowerPlanting1042 {
 
   public static void main(String[] args) {
     int n=4;
-    //int[][] paths = {{1,2},{2,3},{3,4},{4,1},{1,3},{2,4}};
-    int[][] paths = {{1,2},{3,4}};
-    int[] arr = gardenNoAdj(4, paths);
+    int[][] paths = {{1,2},{2,3},{3,4},{4,1},{1,3},{2,4},{5,6}};
+    //int[][] paths = {{1,2},{3,4}};
+    int[] arr = gardenNoAdj(6, paths);
 
     for (int i :  arr) {
       System.out.println(i);

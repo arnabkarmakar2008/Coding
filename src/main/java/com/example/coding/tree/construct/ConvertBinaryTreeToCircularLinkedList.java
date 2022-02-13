@@ -33,7 +33,9 @@ public class ConvertBinaryTreeToCircularLinkedList {
         Node rightList = constructCircularList(node.right);
 
         // To convert tree node to circular linked node, left and right should point to itself
-
+        // Make a circular linked list of single node
+        // (or root). To do so, make the right and
+        // left pointers of this node point to itself
         node.left = node.right = node;
 
         //Now concat leftlist + root + rightlist annd return

@@ -54,7 +54,7 @@ public class CourseSchedule207 {
   }
 
   public static void main(String[] args) {
-    int[][] prerequisites = {{2,1},{2,0},{1,2}};
+    int[][] prerequisites = {{2,1},{2,0},{1,0}};
     System.out.println(canFinish(3, prerequisites));
   }
 }

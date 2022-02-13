@@ -4,46 +4,51 @@ import com.example.coding.tree.Node;
 
 public class ConstructFromInAndPost {
 
-    public static int index = 0;
+    public static Node buildTree(int[] post, int postStart, int postEnd, int[] in, int inStart, int inEnd) {
 
-    public static Node construct(int[] inOrder, int[] postOrder, int start, int end) {
-        if (start > end || index<0) {
+        if (inStart > inEnd || postStart > postEnd) {
             return null;
         }
 
-        Node root = new Node(postOrder[index--]);
+        Node root = new Node(post[postEnd]);
 
-        if (start == end) {
+        if (postStart == postEnd || inStart == inEnd) {
             return root;
         }
 
-        //Search index of root in InOrder array
-        int inIndex = searchIndex(inOrder, start, end, root.key);
+        int index = inStart;
+        while (in[index] != post[postEnd]) {
+            index++;
+        }
 
-        root.right = construct(inOrder, postOrder, inIndex+1, end);
-        root.left = construct(inOrder, postOrder, start, inIndex-1);
+        int numberOfLeftElement = index - inStart;
+
+        root.left = buildTree(post, postStart,postStart+numberOfLeftElement-1, in, inStart, index-1);
+        root.right = buildTree(post, postStart+numberOfLeftElement,postEnd-1, in, index+1, inEnd);
 
         return root;
+
     }
 
-    public static int searchIndex(int[] arr, int start, int end, int key) {
-        int i;
-        for (i=start; i<=end; i++) {
-            if (arr[i] == key) {
-                return i;
-            }
+    public static void printInOrder(Node root) {
+        if (root == null) {
+            return;
         }
-        return i;
+
+        printInOrder(root.left);
+        System.out.println(root.key + " ");
+        printInOrder(root.right);
     }
+
+
 
     public static void main(String[] args) {
         int[] inOrder = {4,8,10,12,14,20,22};
         int[] postOrder = {4,10,14,12,8,22,20};
-        index = inOrder.length-1;
 
-        Node root = construct(inOrder, postOrder, 0, inOrder.length-1);
+        Node root = buildTree(postOrder, 0, (postOrder.length-1), inOrder, 0, inOrder.length-1);
+        printInOrder(root);
 
-        System.out.println(root.key);
 
     }
 }

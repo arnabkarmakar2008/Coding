@@ -12,7 +12,7 @@ public class MaximalSquare {
    * 1 1
    * 1 1 -> Will result in total 5 squares. So for bottom right cell it will be 1 + 1 (1 for bigger square and one for itself)
    *
-   * So for each cell calculation is min(cell[i-1][j, cell[i][j-1], cell[i-1][j-1]] + 1
+   * So for each cell calculation is min(cell[i-1][j, cell[i][j-1], cell[i-1][j-1]]) + 1
    *
    * After getting the max count, just have to square it to get the max area.
    *

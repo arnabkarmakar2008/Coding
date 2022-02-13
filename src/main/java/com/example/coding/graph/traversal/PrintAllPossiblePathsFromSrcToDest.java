@@ -28,7 +28,7 @@ public class PrintAllPossiblePathsFromSrcToDest {
         }
 
         visited[src] = 0;
-        //path.remove(src);
+        path.remove(src);
     }
 
     public static void printPaths(ArrayList<ArrayList<Integer>> adjList, int vertexCount, int src, int dest) {

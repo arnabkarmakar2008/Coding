@@ -15,27 +15,27 @@ public class MinimumSpanningTreePrimsAlgo {
     //visited
 
     public static void primsAlgo(int numberOfVertices, ArrayList<ArrayList<GraphNode>> adjList) {
-        int key[] = new int[numberOfVertices];
+        int weight[] = new int[numberOfVertices];
         int parent[] = new int[numberOfVertices];
         boolean mstArray[] = new boolean[numberOfVertices];
 
         for (int i=0; i < numberOfVertices; i++) {
-            key[i] = Integer.MAX_VALUE;
+            weight[i] = Integer.MAX_VALUE;
             parent[i] = -1;
             mstArray[i] = false;
         }
 
         PriorityQueue<GraphNode> queue = new PriorityQueue();
-        key[0] = 0;
-        queue.add(new GraphNode(0, key[0]));
+        weight[0] = 0;
+        queue.add(new GraphNode(0, weight[0]));
 
         for (int i=0; i < numberOfVertices; i++) {
             int tempVertex = queue.poll().getValue();
             mstArray[tempVertex] = true;
 
             for (GraphNode graphNode : adjList.get(tempVertex)) {
-                if (mstArray[graphNode.getValue()] == false && key[graphNode.getValue()] > graphNode.getWeight()) {
-                    key[graphNode.getValue()] = graphNode.getWeight();
+                if (mstArray[graphNode.getValue()] == false && weight[graphNode.getValue()] > graphNode.getWeight()) {
+                    weight[graphNode.getValue()] = graphNode.getWeight();
                     parent[graphNode.getValue()] = tempVertex;
                     queue.add(graphNode);
                 }

@@ -11,6 +11,13 @@ public class FindBridges {
         low[vertex] =  insertionTime[vertex] = timer++;
 
         for (Integer itr : adjList.get(vertex)) {
+            //
+            // low[] : which lowest discovered vertex it can touch with other route.
+            //There are 3 categories of neighbour. 1. Visited & Parent 2. Visited 3. Unvisited.
+            // 1 -> continue
+            // 2 -> low[vertex] = min(low[vertex], discover/insertion time of visited neighbour
+            // 3 ->
+
             if (itr == parentVertex) {
                 continue;
             } else {

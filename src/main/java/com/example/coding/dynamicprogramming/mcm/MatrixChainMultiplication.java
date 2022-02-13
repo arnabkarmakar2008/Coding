@@ -33,6 +33,8 @@ public class MatrixChainMultiplication {
         int min = Integer.MAX_VALUE;
 
         for (int k=i; k<j; k++) {
+            //1st solve and 2nd solve will give cost to multiply matrix i->k and k+i->j. Now
+            // last portion will give cost of multiplying resuktant matrix
             int temp = solve(arr, i, k) + solve(arr, k+1, j) + (arr[i-1] + arr[k] + arr[j]);
             min = Math.min(min, temp);
         }

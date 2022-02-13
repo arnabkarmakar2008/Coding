@@ -6,7 +6,9 @@ public class EggDroppig {
     public static int[][] t;
     public static void main(String[] args) {
         /**
-         * Problem statement: You are given N floor and K eggs. You have to minimize the number of times you have to drop the eggs to find the critical floor where critical floor means the floor beyond which eggs start to break. Assumptions of the problem:
+         * Problem statement: You are given N floor and K eggs. You have to minimize the number
+         * of times you have to drop the eggs to find the critical floor where critical floor means
+         * the floor beyond which eggs start to break. Assumptions of the problem:
          *
          * If egg breaks at ith floor then it also breaks at all greater floors.
          * If egg does not break at ith floor then it does not break at all lower floors.

@@ -6,66 +6,69 @@ import java.util.HashSet;
 
 public class ConstructFromInAndLevelOrder {
 
+    public static Node constructTree(int[] in, int inStart, int inEnd, int[] level) {
 
-    public static Node constructTree(int[] in, int[] level, int start, int end, int n) {
-        if (n <= 0) {
+        if (inStart > inEnd) {
             return null;
         }
 
-        Node root = new Node(level[start]);
+        Node root = new Node(level[0]);
 
-        //Search root in inorder
-        int index = -1;
-        for (int i = start; i <= end; i++) {
-            if (in[i] == root.key) {
-                index = i;
-                break;
-            }
+        if (level.length == 0) {
+            return root;
         }
 
-        // Insert all left nodes in HashSet
+        //Get the index of root in inorder
+        int index = inStart;
+        while (in[index] != level[0]) {
+            index++;
+        }
+
+        //Put all left tree element in hashset
         HashSet<Integer> set = new HashSet<>();
-        for (int i= start; i<index; i++) {
+        for (int i = inStart; i<index; i++) {
             set.add(in[i]);
         }
 
-        int[] leftLevel = new int[set.size()];
-        int[] rightLevel = new int[end - start - set.size()];
+        //Create leftLevel and rightLevel array
+        int[] leftLevel = new int[index - inStart];
+        int[] rightLevel = new int[inEnd - index];
 
-        int li = 0;
-        int ri = 0;
-
-        for (int i=1; i<n; i++ ) {
+        //Now traverse level order and create leftLevel and rightLevel
+        int leftCounter = 0;
+        int rightCounter = 0;
+        for (int i=1; i<level.length; i++) {
             if (set.contains(level[i])) {
-                leftLevel[li++] = level[i];
+                leftLevel[leftCounter] = level[i];
+                leftCounter++;
             } else {
-                rightLevel[ri++] = level[i];
+                rightLevel[rightCounter] = level[i];
+                rightCounter++;
             }
         }
 
-        root.left = constructTree(in, leftLevel, start, index-1, index-start);
-        root.right = constructTree(in, rightLevel, index+1, end, end-index);
+        root.left = constructTree(in, inStart, index-1, leftLevel);
+        root.right = constructTree(in, index+1, inEnd, rightLevel);
+
         return root;
     }
 
-    public static int findIndex(int[] in, int start, int end, int key) {
-        int i =-1;
-        for (int k=start; k <= end; k++) {
-            if (in[k] == key) {
-                i = k;
-                break;
-            }
+    public static void printInOrder(Node root) {
+        if (root == null) {
+            return;
         }
 
-        return i;
+        printInOrder(root.left);
+        System.out.println(root.key + " ");
+        printInOrder(root.right);
     }
 
 
     public static void main(String[] args) {
-        int[] in = {4,8,10,12,14,20,22};
-        int[] level = {20,8,22,4,12,10,14};
+        int[] in = {4,2,5,1,6,3,7};
+        int[] level = {1,2,3,4,5,6,7};
 
-        Node root = constructTree(in, level, 0, in.length-1, in.length);
-        System.out.println(root);
+        Node root = constructTree(in, 0, in.length-1, level);
+        printInOrder(root);
     }
 }

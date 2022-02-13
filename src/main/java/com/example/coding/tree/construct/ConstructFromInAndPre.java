@@ -3,40 +3,35 @@ package com.example.coding.tree.construct;
 import com.example.coding.tree.Node;
 
 public class ConstructFromInAndPre {
-    Node root;
-    public static int index = 0;
 
-    public Node constructTree(int[] pre, int[] in, int start, int end) {
-        //Base cond
-        if (start > end) {
+    public static Node buildTree(int[] pre, int preStart, int preEnd, int[] in, int inStart, int inEnd) {
+
+        if (inStart > inEnd || preStart > preEnd) {
             return null;
         }
 
-        Node tNode = new Node(pre[index++]);
+        Node root = new Node(pre[preStart]);
 
-        if (start == end) {
-            return tNode;
+        if (preStart == preEnd || inStart == inEnd) {
+            return root;
         }
 
-        int intIndex = searchIndex(in, start, end, tNode.key);
-
-        tNode.left = constructTree(pre, in, start, intIndex-1);
-        tNode.right = constructTree(pre, in, intIndex+1, end);
-
-        return tNode;
-    }
-
-    public int searchIndex(int[] arr, int start, int end, int key) {
-        int i;
-        for (i=start; i<=end; i++) {
-            if (arr[i] == key) {
-                return i;
-            }
+        //Index of root in inorder
+        int index = inStart;
+        while (in[index] != pre[preStart]) {
+            index++;
         }
-        return i;
+
+        int numberOfLeftElement = index - inStart;
+
+        root.left = buildTree(pre, preStart + 1, preStart + numberOfLeftElement, in, inStart, index-1);
+        root.right = buildTree(pre, preStart + numberOfLeftElement+1, preEnd, in, index+1, inEnd);
+
+        return root;
+
     }
 
-    public void printInOrder(Node root) {
+    public static void printInOrder(Node root) {
         if (root == null) {
             return;
         }
@@ -47,12 +42,10 @@ public class ConstructFromInAndPre {
     }
 
     public static void main(String[] args) {
-        int[] inOrder = {8,4,2,5,1,6,3,7};
-        int[] preOrder = {1,2,4,8,5,3,6,7};
-        ConstructFromInAndPre constructBinaryTreeFromInPreOrder = new ConstructFromInAndPre();
+        int[] inOrder = {4,2,5,1,6,3,7};
+        int[] preOrder = {1,2,4,5,3,6,7};
 
-
-        Node root = constructBinaryTreeFromInPreOrder.constructTree(preOrder, inOrder, 0, 7);
-        constructBinaryTreeFromInPreOrder.printInOrder(root);
+        Node root = buildTree(preOrder, 0, preOrder.length-1, inOrder, 0, inOrder.length-1);
+        printInOrder(root);
     }
 }

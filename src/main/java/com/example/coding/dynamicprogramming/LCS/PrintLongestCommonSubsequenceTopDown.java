@@ -1,5 +1,7 @@
 package com.example.coding.dynamicprogramming.LCS;
 
+import java.util.Stack;
+
 public class PrintLongestCommonSubsequenceTopDown {
 
     public static void main(String[] args) {
@@ -61,6 +63,42 @@ public class PrintLongestCommonSubsequenceTopDown {
                     j--;
                 }
             }
+        }
+
+        //Print shortest super sequence
+        i = n;
+        j = m;
+        String shortestSuperSequence = "";
+        Stack<Character> stack = new Stack<>();
+
+        while (i > 0 && j > 0) {
+            if (input1.charAt(i-1) == input2.charAt(j-1)) {
+                stack.push(input1.charAt(i-1));
+                shortestSuperSequence = shortestSuperSequence + input1.charAt(i-1);
+                i--;
+                j--;
+            } else {
+                if (t[i-1][j] > t[i][j-1]) {
+                    shortestSuperSequence = shortestSuperSequence + input1.charAt(i-1);
+                    stack.push(input1.charAt(i-1));
+                    i--;
+                } else {
+                    shortestSuperSequence = shortestSuperSequence + input2.charAt(j-1);
+                    stack.push(input2.charAt(j-1));
+                    j--;
+                }
+            }
+        }
+
+        //Now here either i or j can be 0. So we have to prit rest of the string
+        while (i > 0) {
+            stack.push(input1.charAt(i-1));
+            i--;
+        }
+
+        while (j > 0) {
+            stack.push(input2.charAt(j-1));
+            j--;
         }
 
         return str;

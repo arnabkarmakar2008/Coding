@@ -52,8 +52,8 @@ public class SteppingNumber {
     }
 
     public static void main(String[] args) {
-        int start = 0;
-        int end = 21;
+        int start = 100;
+        int end = 200;
 
         for (int i=0; i<=9; i++) {
             steppingNumber(start, end, i);
