@@ -52,7 +52,7 @@ public class KthSmallestElementInSortedMatrix {
 
     //Adding first column in pq.
     for (int i=0; i<rows; i++) {
-      pq.add(new int[] {matrix[i][0], i, 0});
+      pq.add(new int[] {matrix[i][0], i, 0}); //element, row, column
     }
 
     int ans = -1;
@@ -60,9 +60,9 @@ public class KthSmallestElementInSortedMatrix {
     for (int i=1; i<=k; i++) {
       int[] topArray = pq.poll(); // Top of the queue will be ith smallest element. First pop will give 1st smallest
       //element..2nd pop will give second. As rowsa are sorted, add next element from the same row in pq.
-      int r = topArray[1];
-      int c = topArray[2];
-      ans = topArray[0];
+      int r = topArray[1]; //row
+      int c = topArray[2]; //column
+      ans = topArray[0]; //element
 
       if (c+1 < cols) {
         pq.add(new int[] {matrix[r][c+1], r, c+1});

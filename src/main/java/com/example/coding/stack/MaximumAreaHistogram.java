@@ -6,6 +6,11 @@ import java.util.Stack;
 
 public class MaximumAreaHistogram {
 
+  /**
+   * https://www.youtube.com/watch?v=vcv3REtIvEo
+   * @param array
+   * @return
+   */
   public static int maxHistogramArea(int[] array) {
     int[] leftArray = new int[array.length];
     int[] rightArray = new int[array.length];
@@ -24,6 +29,7 @@ public class MaximumAreaHistogram {
         if (stack.empty()) {
           leftArray[i] = 0; // There is no element in left. So we have to include till 0 index
         } else {
+          // We have to add +1 because we have to take till element is higher than current.
           leftArray[i] = stack.peek().getKey() + 1;
         }
       }

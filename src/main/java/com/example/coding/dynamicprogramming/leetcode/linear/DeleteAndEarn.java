@@ -22,7 +22,7 @@ public class DeleteAndEarn {
 
     int[] countArray = new int[10001]; //0 ... 10000
 
-    //Store the count of each number in coutArray
+    //Store the count of each number in countArray
     /**
      * IP = 3 2 3 7 4
      * countArray = 0 0 1 2 1 0 0 1 (count of 3 = 2, count of 2 = 1)
@@ -37,7 +37,8 @@ public class DeleteAndEarn {
     int exclude = 0;
 
     for (int i=0; i<=10000; i++) {
-      int newInclude = exclude + countArray[i]*i; // for including, we have to take previous exclude + current element
+      int newInclude = exclude + countArray[i]*i; // for including, we have to take previous exclude(if we are including ith element,
+      //then we cannot take i-1th and i+1th element // ) + current element
       int newExclude = Math.max(include, exclude); // for exclude, it will be max of pre include and exclude.
 
       include = newInclude;

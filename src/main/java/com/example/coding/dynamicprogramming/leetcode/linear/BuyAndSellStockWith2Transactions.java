@@ -44,6 +44,7 @@ public class BuyAndSellStockWith2Transactions {
     int[] dpIfBoughtToday = new int[len];
 
     for (int i = len-2; i>=0; i--) {
+
       if (price[i] > maxSoFar) {
         maxSoFar = price[i];
       }

@@ -1,0 +1,5 @@
+1. 3456 Get all digits :
+  Unit place = 3456/1 %10 = 6
+  10th place = 3456/10 %10 = 5
+  100th place = 3456/100 %10 = 4
+  1000th Place = 3456/1000 %10 = 3

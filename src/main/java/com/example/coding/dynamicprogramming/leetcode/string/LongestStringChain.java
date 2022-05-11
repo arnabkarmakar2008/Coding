@@ -20,6 +20,11 @@ import java.util.Map;
  */
 public class LongestStringChain {
 
+  /**
+   * https://www.youtube.com/watch?v=4kbSc3nECH8
+   * @param words
+   * @return
+   */
   public static int longestStrChain(String[] words) {
     Arrays.sort(words, Comparator.comparingInt(string -> string.length()));
 

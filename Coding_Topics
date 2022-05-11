@@ -1,0 +1,99 @@
+======Graph Interview Topics =========
+
+DFS: Tonnes of problems on Leetcode
+BFS: Tonnes of problems on Leetcode
+Union Find: Tonnes of problems on Leetcode
+Topological Sorting: https://leetcode.com/problems/course-schedule/
+Single/Multi-source Shortest Path: Dijkstra, Bellman, Floyd-Warshall algorithm. Leetcode has good amount of problems on this topic. Few are following https://leetcode.com/problems/network-delay-time/
+Minimum Spanning Trees: Prim's and Kruskal's algorithm. https://leetcode.com/problems/optimize-water-distribution-in-a-village/
+Strongly Connected Components: Tarjan's Algorithm https://leetcode.com/problems/critical-connections-in-a-network/
+Hierholzer's algorithm for Eulerian circuits. https://leetcode.com/problems/reconstruct-itinerary/
+A* Searchhttps://leetcode.com/problems/sliding-puzzle/
+Max-Flow, Min-Cut https://leetcode.com/problems/maximum-students-taking-exam/
+Articulation points and bridges https://leetcode.com/problems/critical-connections-in-a-network/
+
+=======
+1. BFS
+2. DFS
+3. Topological Sort - > Iterative (Kahn's)
+                    - > Recursion
+
+4. Shortest Path -> Dijkstar's (Single source to all destination : for 0 and +ve)
+                 -> Bellman Ford (For negative cycle)
+                 -> Ford Warshall (All pair shortest path)
+
+5. MST -> Prim's
+       -> Kruskal
+
+6. Articulation point and Bridges
+
+7. Kosaraju algo
+
+8. DSU (Union find)
+
+==============
+Leetcode By Google Candidate :  https://docs.google.com/spreadsheets/d/1KkCeOIBwUFfKrHGGZe_6EJRCIqaM6MJBo0uSIMSD9bs/edit#gid=782922309
+https://docs.google.com/spreadsheets/d/1A2PaQKcdwO_lwxz9bAnxXnIQayCouZP6d-ENrBz_NXc/edit#gid=0
+
+Google Candidate : https://pastebin.com/7E5AQS73
+
+
+===== Unix commands=====
+awk, sed, grep, sort, uniq, xargs
+
+======
+System Design
+
+https://github.com/theanalyst/awesome-distributed-systems
+Amazons Link for Dist Computing :  https://aws.amazon.com/builders-library/?cards-body.sort-by=item.additionalFields.sortDate&cards-body.sort-order=desc&awsf.filter-content-category=*all&awsf.filter-content-type=*all&awsf.filter-content-level=*all
+
+Github - Start from here : https://github.com/donnemartin/system-design-primer#appendix
+
+======
+DP
+
+Leetcode curated list : https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
+What is DP : Very good explanation :  https://leetcode.com/problems/target-sum/discuss/455024/DP-IS-EASY!-5-Steps-to-Think-Through-DP-Questions.
+
+
+====
+Super article : How to follow leetcode : https://towardsdatascience.com/how-i-leetcode-for-6-months-and-land-a-job-at-amazon-b76bdfc79abb
+
+======
+
+Backtracking ::
+
+Format : https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
+
+=======
+Binary Search ::
+
+Minimize the largest and maximize the smallest :: 99% binary search problem
+
+
+=======
+Leetcode DP Curated Lists : https://leetcode.com/discuss/general-discussion/662866/DP-for-Beginners-Problems-or-Patterns-or-Sample-Solutions
+See comment section
+
+
+
+======
+
+Pattern === https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed
+
+======
+
+String
+======
+Leetcode Pattern :  https://leetcode.com/discuss/interview-question/2001789/collections-of-important-string-questions-pattern
+
+
+=======Coding from google candidate with company tag======
+https://docs.google.com/spreadsheets/d/14aVAyDsQmz50TxhldNV5lmsyvYOJrAT9gzi7sGfMu9k/edit#gid=0
+
+========Company frequency Leetcode===============
+https://github.com/xizhengszhang/Leetcode_company_frequency/blob/master/Facebook%20-%20LeetCode.pdf
+
+========= Post by Microsoft SDE==============
+
+https://www.linkedin.com/posts/parassaini_interview-tips-preparation-activity-6928643755113598976-asYj?utm_source=linkedin_share&utm_medium=member_desktop_web

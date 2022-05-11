@@ -11,7 +11,7 @@ public class BuyAndSellStockWithKTransactions {
   }
 
   /**
-   * DP Problem. Put prices in X and Days in Y.
+   * DP Problem. Put prices in X and transactions in Y.
    *    9  6  7  6  3  8
    * 0
    *
@@ -38,18 +38,20 @@ public class BuyAndSellStockWithKTransactions {
     //Ist row and Ist column will be zero. On 0th Day, max profit will be 0. And if 0 txns are allowed then
     // aslo max profit will be 0.
 
-    for (int i = 1; i <= maxTrn; i++) {
-      for (int j = 1; j < len; j++) {
+    for (int t = 1; t <= maxTrn; t++) { // t :: transaction d :: day
+      for (int d = 1; d < len; d++) {
 
         // Max profit on jth day by making i txns.
-        dp[i][j] = dp[i][j-1];
+        dp[t][d] = dp[t][d-1];
 
         //If i-1 txns are made on j-1th days, then profit will be j-1th days profit + price diff
         int max = Integer.MIN_VALUE;
-        for (int pd = 0; pd < i; pd ++) {
-          max = Math.max(max, (dp[i-1][pd] + (price[j] - price[pd])));
+        for (int pd = 0; pd < d; pd ++) { //pd - previous day
+          int profitTillTMinusOneTraninPd = dp[t-1][pd];
+          int profitTillTTransaction = profitTillTMinusOneTraninPd + (price[d] - price[pd]);
+          max = Math.max(max, profitTillTTransaction);
         }
-        dp[i][j] = Math.max(dp[i][j], max);
+        dp[t][d] = Math.max(dp[t][d], max);
 
       }
     }
