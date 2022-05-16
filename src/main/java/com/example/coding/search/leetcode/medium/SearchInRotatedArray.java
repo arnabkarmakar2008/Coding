@@ -14,13 +14,45 @@ package com.example.coding.search.leetcode.medium;
  */
 public class SearchInRotatedArray {
 
+  /**
+   * https://www.youtube.com/watch?v=1uu3g_uu8O0
+   *
+   * Get mid. Either low->mid or mid->high will be sorted. Now decide which part the target can belong. Discard other half.
+   * @param nums
+   * @param target
+   * @return
+   */
   public static int search(int[] nums, int target) {
-    return 0;
+
+    int low = 0;
+    int high = nums.length-1;
+
+    while (low <= high) {
+      int mid = (low+high)/2;
+
+      if (nums[mid] == target) {
+        return mid;
+      } else if (nums[low] < nums[mid]) {
+        if (target >= nums[low] && target < nums[mid]) {
+          high = mid-1;
+        } else {
+          low = mid+1;
+        }
+      } else if (nums[high] > nums[mid]) {
+        if (target > nums[mid] && target <= nums[high]) {
+          low = mid + 1;
+        } else {
+          high = mid-1;
+        }
+      }
+    }
+
+    return -1;
   }
 
   public static void main(String[] args) {
     int[] nums = {4,5,6,7,0,1,2};
 
-    System.out.println(search(nums, 0));
+    System.out.println(search(nums, 7));
   }
 }

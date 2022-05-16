@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class LongestIncreasingSubsequenceCount {
 
   public static int longest(int[] arr) {
-    int length = arr.length;;
+    int length = arr.length;
 
     int[] lisArray = new int[length];
     int[] countArray = new int[length];
@@ -33,6 +33,9 @@ public class LongestIncreasingSubsequenceCount {
             countArray[i] = countArray[j];
 
           } else if (lisArray[i] == lisArray[j]+1) {
+
+            //there is other subsequence which has already made this. So we have to increase count.
+
             //5 8 7 1 9
             // lis array will be 1 2 2 1 3
             countArray[i] = countArray[i] + countArray[j];

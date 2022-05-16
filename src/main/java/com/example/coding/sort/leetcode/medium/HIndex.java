@@ -12,6 +12,29 @@ package com.example.coding.sort.leetcode.medium;
 public class HIndex {
 
   public static int hIndex(int[] citations) {
+
+    int min = Integer.MAX_VALUE;
+    int max = Integer.MIN_VALUE;
+
+    for (int i=0; i< citations.length; i++) {
+      if (citations[i] > max) {
+        max = citations[i];
+      }
+
+      if (citations[i] < min) {
+        min = citations[i];
+      }
+    }
+
+    int[] frequencyArray = new int[max-min+1];
+
+    for (int i=0; i< citations.length; i++) {
+      frequencyArray[citations[i]]++;
+    }
+
+
+
+
     return 0;
   }
 

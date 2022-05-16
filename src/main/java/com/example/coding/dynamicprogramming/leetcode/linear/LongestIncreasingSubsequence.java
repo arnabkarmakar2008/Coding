@@ -21,7 +21,7 @@ public class LongestIncreasingSubsequence {
       int j=0;
 
       while (j < i) {
-        if (arr[i] > arr[j] && lisArray[i] <= lisArray[j]) {
+        if (arr[i] > arr[j] && lisArray[i] < lisArray[j]+1) {
           lisArray[i] = lisArray[j] + 1;
         }
 
@@ -38,7 +38,7 @@ public class LongestIncreasingSubsequence {
   }
 
   public static void main(String[] args) {
-    int[] arr = {5,8,7,1,9};
+    int[] arr = {1,3,5,4,7};
     System.out.println(longest(arr));
   }
 
