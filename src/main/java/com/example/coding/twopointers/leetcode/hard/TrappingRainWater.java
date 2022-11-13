@@ -13,7 +13,6 @@ public class TrappingRainWater {
    */
   public static int trap(int[] height) {
     //Calculate maxLeft and maxRight for each index.
-
     int[] maxLeftArray = new int[height.length];
     int[] maxRightArray = new int[height.length];
 

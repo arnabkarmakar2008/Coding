@@ -19,6 +19,10 @@ package com.example.coding.matrix.leetcode.hard;
 public class CherryPick {
 
   /**
+   *
+   * https://www.youtube.com/watch?v=ZV0sUzfA7Eg&t=2089s
+   *
+   *
    * Rules :: 1. Move right or down from (0,0) to (n-1, n-1) 2. Move left or up from (n-1,n-1) to (0,0)
    * Moving (n-1,n-1) to (0,0) using left and up is equivalent to move right or down from (0,0) to (n-1, n-1).
    * So moving from (0,0) from (n-1,n-1) 2 times.

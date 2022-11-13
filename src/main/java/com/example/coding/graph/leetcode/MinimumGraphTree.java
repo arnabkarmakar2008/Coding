@@ -21,67 +21,65 @@ public class MinimumGraphTree {
      * Note : For the graph with odd no. of nodes, only the node at the middle of the graph when made the root, will give a minimum height tree.
      * For the graph with even no. of nodes, both the middle nodes when made the root give a minimum height tree.
      * Idea is to remove all leaf nodes till root.
+     *
+     * https://leetcode.com/problems/minimum-height-trees/discuss/76055/Share-some-thoughts
+     *
+     *
      * @param n
      * @param edges
      * @return
      */
 
+    public static List<Integer> findMinHeightTrees2(int n, int[][] edges) {
+        List<Set<Integer>> adj = new ArrayList<>();
 
-    public static List<Integer> findMinHeightTrees(int n, int[][] edges) {
-        Map<Integer, ArrayList<Integer>> map = new HashMap<>();
-        int[] indegree = new int[n];
-        List<Integer> result = new ArrayList<>();
-
-
-        //Create adjList and indegree count
-        for (int count=0; count<edges.length; count++ ) {
-            map.putIfAbsent(edges[count][0], new ArrayList<>());
-            map.get(edges[count][0]).add(edges[count][1]);
-            indegree[edges[count][0]]++;
-
-            map.putIfAbsent(edges[count][1], new ArrayList<>());
-            map.get(edges[count][1]).add(edges[count][0]);
-            indegree[edges[count][1]]++;
+        for (int ct=0; ct<n; ct++) {
+            adj.add(new HashSet<>());
         }
 
-        //Push all indegree one into queue
-        Queue<Integer> queue = new LinkedList<>();
+        for (int[] edge : edges) {
+            adj.get(edge[0]).add(edge[1]);
+            adj.get(edge[1]).add(edge[0]);
+        }
 
-        for (int count=0; count<n; count++) {
-            if (indegree[count] == 1) {
-                queue.add(count);
-                indegree[count]--;
+        List<Integer> leaves = new ArrayList<>();
+
+        for (int ct=0; ct<n; ct++) {
+            if (adj.get(ct).size() == 1) {
+                leaves.add(ct); //Adding leaf nodes. Leaf node will have indegree 1
             }
         }
 
-        int rootCount = n;
+        /**
+         * Idea is to remove leaf node one by one.
+         */
+        while ( n > 2) {
+            n = n - leaves.size();
 
-        while (rootCount > 2) {
-            rootCount = rootCount - queue.size();
-            result.clear();
-            for (int count=0; count<queue.size(); count++) {
-                int topVertex = queue.poll();
-                for (int adjVertex : map.get(topVertex)) {
-                    indegree[adjVertex]--;
-                    map.get(adjVertex).remove(new Integer(topVertex));
-                    if (indegree[adjVertex] == 1) {
-                        queue.add(adjVertex);
-                        result.add(adjVertex);
-                    }
+            List<Integer> newLeaves = new ArrayList<>();
+
+            for (int leaf : leaves) {
+                int parent = adj.get(leaf).iterator().next();
+                adj.get(parent).remove(leaf);
+
+                if (adj.get(parent).size() == 1) {
+                    newLeaves.add(parent);
                 }
             }
 
-
+            leaves = newLeaves;
         }
 
-        return result;
+        return leaves;
+     }
 
-    }
+
+
 
     public static void main(String[] args) {
         int N = 7;
         int edges[][] = {{3,0},{3,1},{3,2},{3,4},{5,4},{5,6}};
 
-        List<Integer> list = findMinHeightTrees(N, edges);
+        List<Integer> list = findMinHeightTrees2(N, edges);
     }
 }

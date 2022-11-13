@@ -68,17 +68,12 @@ public class MostStonesRemoved947 {
         int size = stones.length;
         DSU dsu = new DSU(size);
 
-        Map<Integer, Integer> rowMap = new HashMap<>();
-        Map<Integer, Integer> colMap = new HashMap<>();
-
-        for (int i=0; i<size; i++) {
-            int r = stones[i][0];
-            int c = stones[i][1];
-            rowMap.putIfAbsent(r, i); // Putting first stone as parent of the row
-            colMap.putIfAbsent(c, i); // putting first stone as parent of the column
-
-            dsu.unionByRank(rowMap.get(r),i);
-            dsu.unionByRank(colMap.get(c),i);
+        for (int i=0; i<size-1; i++) {
+            for (int j = i+1; j<size; j++) {
+                if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+                    dsu.unionByRank(i, j);
+                }
+            }
 
         }
 

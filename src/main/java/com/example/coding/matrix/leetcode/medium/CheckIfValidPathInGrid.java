@@ -46,7 +46,8 @@ public class CheckIfValidPathInGrid {
       if (newR <0 || newC < 0 || newR >= rows || newC >= cols || visited[newR][newC] == true)
         continue;
       // Main logic is here. We need to move to cell from which we can come back. Then only cells are connected.
-      // With 6, we can move from UP->Right. Then in the Right cell should have value to move left.
+      // With 6, we can move from UP->Right. Then in the Right cell should have value to move left and up cell has value to
+      //move down
 
       for (int[] newdir : direction[grid[newR][newC]-1]) {
         if (newR + newdir[0] == row && newC + newdir[1] == col) {

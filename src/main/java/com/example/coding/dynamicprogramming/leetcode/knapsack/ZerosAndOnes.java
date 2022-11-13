@@ -10,6 +10,13 @@ package com.example.coding.dynamicprogramming.leetcode.knapsack;
  */
 public class ZerosAndOnes {
 
+  /**
+   * https://www.youtube.com/watch?v=qkUZ87NCYSw
+   * @param strs
+   * @param m
+   * @param n
+   * @return
+   */
   public static int findMaxForm(String[] strs, int m, int n) {
     int[][][] dp = new int[m+1][n+1][strs.length];
     return solve(strs, m, n, 0, dp);

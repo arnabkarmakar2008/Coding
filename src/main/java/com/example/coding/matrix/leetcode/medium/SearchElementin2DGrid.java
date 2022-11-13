@@ -29,33 +29,14 @@ public class SearchElementin2DGrid {
     return false;
   }
 
-  public static boolean searchMatrixUsingBinarySearch(int[][] matrix, int target) {
-    int rows = matrix.length;
-    int cols = matrix[0].length;
 
-    int low = 0;
-    int high = rows*cols-1;
-
-    while (low <= high) {
-      int mid = (high+low)/2;
-
-      if (matrix[mid/cols][mid%cols] == target) {
-        return true;
-      } else if (matrix[mid/cols][mid%cols] < target) {
-        low = mid+1;
-      } else if (matrix[mid/cols][mid%cols] > target) {
-        high = mid-1;
-      }
-    }
-
-    return false;
-  }
 
   public static void main(String[] args) {
     int[][] grid = {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
     int target = 22;
 
-    //System.out.println(searchMatrix(grid, target));
-    System.out.println(searchMatrixUsingBinarySearch(grid, target));
+    //
+    System.out.println(searchMatrix(grid, target));
+    //System.out.println(searchMatrixUsingBinarySearch(grid, target));
   }
 }

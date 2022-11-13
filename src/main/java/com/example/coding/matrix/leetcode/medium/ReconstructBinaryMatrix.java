@@ -35,9 +35,6 @@ public class ReconstructBinaryMatrix {
       lower -= array[1][j];
     }
 
-
-
-
     return (lower == 0 && upper == 0) ? new ArrayList(Arrays.asList(array[0], array[1])) : new ArrayList<>();
 
   }

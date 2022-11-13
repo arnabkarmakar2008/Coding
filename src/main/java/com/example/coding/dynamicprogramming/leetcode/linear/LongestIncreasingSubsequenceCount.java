@@ -38,6 +38,7 @@ public class LongestIncreasingSubsequenceCount {
 
             //5 8 7 1 9
             // lis array will be 1 2 2 1 3
+            // count array will be 1 1 1 1 2
             countArray[i] = countArray[i] + countArray[j];
           }
 

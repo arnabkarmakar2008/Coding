@@ -20,13 +20,14 @@ public class RemoveInvalidParantheses {
   public static List<String> removeInvalidParentheses(String s) {
     int invalidCount = numberOfInvalid(s);
     List<String> resultList = new ArrayList<>();
+    //invalidCount :: can make string valid after removing "invalidCount" number of brackets
     generateValidParantheses(s, invalidCount, resultList);
     return resultList;
   }
 
-  public static void generateValidParantheses(String s, int invalidCount, List<String> resultList) {
+  public static void generateValidParantheses(String s, int minRemovalAllowed, List<String> resultList) {
 
-    if (invalidCount == 0) {
+    if (minRemovalAllowed == 0) {
       if (numberOfInvalid(s) == 0)
         resultList.add(s);
       return;
@@ -35,7 +36,7 @@ public class RemoveInvalidParantheses {
     for (int i=0; i < s.length(); i++) {
       String left = s.substring(0,i);
       String right = s.substring(i+1);
-      generateValidParantheses(left+right, invalidCount-1,resultList);
+      generateValidParantheses(left+right, minRemovalAllowed-1,resultList);
     }
 
   }

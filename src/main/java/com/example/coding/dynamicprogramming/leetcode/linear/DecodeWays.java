@@ -23,6 +23,12 @@ package com.example.coding.dynamicprogramming.leetcode.linear;
  */
 public class DecodeWays {
 
+  /**
+   * https://www.youtube.com/watch?v=cQX3yHS0cLo
+   *
+   * @param input
+   * @return
+   */
   public static int decode(String input) {
 
     /**
@@ -33,33 +39,21 @@ public class DecodeWays {
      * 4. non zero non zero
      */
 
-    int[] dp = new int[input.length()];
+    int[] dp = new int[input.length()]; //will contain number of ways to decode
 
-    dp[0] = 1; // We can decode 1st char in one way only and 1 char cannot be zero.
+    dp[0] = 1; // empty string can be decoded one way
+    dp[1] = input.charAt(0) == '0' ? 0 : 1; // Single digit. If 0 then number of way is 0 else 1.
 
-    for (int i=1; i<input.length(); i++) {
+    for (int i=2; i < dp.length; i++) {
+      int oneDigit = Integer.valueOf(input.substring(i-1,i)); //consider 1 digit only first. So have to take i-1th digit
+      int twoDigit = Integer.valueOf(input.substring(i-2,i)); //Consider 2 digit. So have to take i-2th and i-1th digit
 
-      if (input.charAt(i-1) == '0' && input.charAt(i) == '0') {
-        dp[i] = 0;
-      } else if (input.charAt(i-1) == '0' && input.charAt(i) != '0') {
-        //if 03, then we can take only 3. We cannot take 03.
-        dp[i] = dp[i-1];
-      } else if (input.charAt(i-1) != '0' && input.charAt(i) == '0') {
-        //We cannot take only last 0. We have to take 2 digit. Also we have to check 2 digits are
-        //not more than 26.
-        if (input.charAt(i-1) == '1' || input.charAt(i-1) == '2') {
-          // It will check if it is 20 or 10
-          dp[i] = i >= 2 ?  dp[i-2] : 1; //
-        } else {
-          dp[i] = 0;
-        }
-      } else {
-        if (Integer.parseInt(input.substring(i-1, i+1)) <=26) {
-          dp[i] = dp[i-1] + (i >= 2 ? dp[i-2] : 1);
-        } else {
-          dp[i] = dp[i-1]; //
-        }
+      if (oneDigit < 10) {
+        dp[i] += dp[i-1]; //If one digit then add number of ways to the current-1 dp value.
+      }
 
+      if (twoDigit >=10 && twoDigit <=26) {
+        dp[i] += dp[i-2]; ////If two digit then add number of ways to the current-2 dp value.
       }
     }
 

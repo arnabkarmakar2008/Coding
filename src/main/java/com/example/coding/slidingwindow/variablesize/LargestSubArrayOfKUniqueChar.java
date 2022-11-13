@@ -19,13 +19,7 @@ public class LargestSubArrayOfKUniqueChar {
 
         while (end <= charArray.length-1) {
             //calculation
-
-            if (map.containsKey(charArray[end])) {
-                int ct = map.get(charArray[end]);
-                map.put(charArray[end], ct + 1);
-            } else {
-                map.put(charArray[end], 1);
-            }
+            map.put(charArray[end], map.getOrDefault(charArray[end],0)+1);
 
             if (map.size() < uniqueCount) {
                 end ++;

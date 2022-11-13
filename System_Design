@@ -1,0 +1,35 @@
+Topics
+
+1. CDN :: Read from GIT first
+
+2. DNS :: Read from GIT first
+
+3. Reverse Proxy :: Read from GIT first
+
+4. Sharding
+
+
+
+
+
+Estimation :: https://dev.to/ievolved/how-i-calculate-capacity-for-systems-design-3477 :: https://www.codementor.io/@robinpalotai/back-of-the-envelope-calculation-for-system-design-interviews-z4ljbsp5l
+
+Very good read :: Covers all topics :: https://tianpan.co/notes/161-designing-stock-exchange
+
+Application Design ::
+
+https://excalidraw.com/#room=a46a1c4cdf58fdf153dd,EwyGFc6KMmV0mZRJCD25ZA
+
+1. Dropbox/Google Drive ::
+
+Think software :: https://www.youtube.com/watch?v=3RHjRXWAUvg
+
+a) An account
+b) Root folder - replicated to other devices
+c) 10 GB
+d) File/ folder sharing
+e) Owner has full access others only read only
+f) Offline modification of the files. When user comes online, those gets synced to other devices
+g) Multiple vesrions of file - how versioning affects
+
+Non functional req : Highly scalable/highly available/min latency/min bandwidth

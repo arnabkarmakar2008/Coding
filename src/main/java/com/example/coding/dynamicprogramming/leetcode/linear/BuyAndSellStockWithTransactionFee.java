@@ -10,11 +10,48 @@ public class BuyAndSellStockWithTransactionFee {
    * @param args
    */
   public static void main(String[] args) {
-    int[] price = {10,15,17,20,16,18,22,20,22,20,23,25};
-    int txFee = 3;
+    int[] price = {1,3,2,8,4,9};
+    int txFee = 2;
 
-    System.out.println(maxProfit(price, 3));
+    System.out.println(maxProfit(price, 2));
+    System.out.println(maxProfitEfficient(price, 2));
   }
+
+  /**
+   * https://www.youtube.com/watch?v=DzH4kVcyuOI
+   * We have to maintain Buy and Sell state.
+   *
+   * In Buy state, I can either do not do anything or I can buy. First case, copy value from previous buy row.
+   * 2nd case, Check the value of last row sell state. So it will be prev sell - current price - fee. Get the max from these twi values.
+   *
+   * In Sell state, I can either do not do anything or I can sell. First case, copy value from previous sell row.
+   * 2nd case, value will be prev buy state + current price. Get the max.
+   *
+   * @param price
+   * @param fee
+   * @return
+   */
+
+  public static int maxProfitEfficient(int [] price, int fee) {
+    int priceLength = price.length;
+    int[][] dp = new int[priceLength][2];
+
+    dp[0][0] = -(price[0] + fee);
+    dp[0][1] = 0;
+
+    for (int i=1; i<priceLength; i++) {
+      //Derive buy state
+      int buyValue = Math.max(dp[i-1][0], dp[i-1][1] - (price[i] + fee));
+      int sellValue = Math.max(dp[i-1][1], dp[i-1][0] + price[i]);
+
+      dp[i][0] = buyValue;
+      dp[i][1] = sellValue;
+    }
+
+    return dp[priceLength-1][1];
+
+  }
+
 
   public static int maxProfit (int[] price, int txFee) {
     int len = price.length;

@@ -3,13 +3,13 @@ package com.example.coding.dynamicprogramming.LCS;
 public class LongestCommonSubstring {
     public static void main(String[] args) {
         /**
-         * String input1 = "abdefgh"
+         * String input1 = "abcdefgh"
          * String input2 = "abcdfkrt"
          * Common subsequence : "ab"
          * o/p : 2
          */
-        String input1 = "abdefgh";
-        String input2 = "abkrt";
+        String input1 = "abcdefgh";
+        String input2 = "abckrt";
         int maxSize = solve(input1, input2, input1.length(), input2.length());
         System.out.println("Max Substring :: " + maxSize);
     }

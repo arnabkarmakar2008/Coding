@@ -31,6 +31,7 @@ public class WildCardMatching {
         if (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '?') {
           dp[i][j] = dp[i-1][j-1];
         } else if (p.charAt(j-1) == '*') {
+          //When we consider * as empty string, then exclude * and check if dp[i][j-1]
           dp[i][j] = dp[i-1][j] || dp[i][j-1]; // dp[i][j-1] when * represent empty chars.
         } else {
           dp[i][j] = false;

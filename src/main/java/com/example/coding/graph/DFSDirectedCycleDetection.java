@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 public class DFSDirectedCycleDetection {
 
-
-
-
     private static boolean dfsCycleCheck(int vertex, ArrayList<ArrayList<Integer>> adjList, int[] visited, int[] dfsVisited) {
             visited[vertex] = 1;
             dfsVisited[vertex] = 1;

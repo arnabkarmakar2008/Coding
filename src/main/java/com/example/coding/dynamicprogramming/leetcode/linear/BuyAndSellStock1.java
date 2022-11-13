@@ -19,14 +19,14 @@ public class BuyAndSellStock1 {
 
   public static int efficientSellEveryDay(int[] price) {
     int minSoFar = Integer.MAX_VALUE;
-    int maxSoFar = Integer.MIN_VALUE;
+    int maxProfitSoFar = Integer.MIN_VALUE;
 
     for (int i=0; i< price.length; i++) {
       minSoFar = Math.min(minSoFar, price[i]);
-      maxSoFar = Math.max(maxSoFar, price[i] - minSoFar);
+      maxProfitSoFar = Math.max(maxProfitSoFar, price[i] - minSoFar);
     }
 
-    return maxSoFar;
+    return maxProfitSoFar;
   }
 
   public static int bruteForceSolution(int[] price) {

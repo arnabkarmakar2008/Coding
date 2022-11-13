@@ -1,5 +1,8 @@
 package com.example.coding.sort.basic;
 
+/**
+ * https://www.youtube.com/watch?v=aiUHB-3EOg8
+ */
 public class MergeSort {
 
   public static int[] mergeSort(int[] nums, int low, int high) {

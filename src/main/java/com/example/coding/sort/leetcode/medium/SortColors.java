@@ -11,7 +11,10 @@ package com.example.coding.sort.leetcode.medium;
 public class SortColors {
 
   /**
-   * Kind of bucket sort 0(N) solution
+   *
+   * https://www.youtube.com/watch?v=4xbWSRZHqac&t=710s
+   *
+   *
    * @param nums
    */
   public static void sortColorsSinglePass(int[] nums) {

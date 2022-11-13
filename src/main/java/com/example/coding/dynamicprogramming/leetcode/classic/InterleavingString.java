@@ -47,10 +47,59 @@ public class InterleavingString {
     return recursionSolution(s1,0,s2,0,s3,0);
   }
 
+  /**
+   * https://www.youtube.com/watch?v=U49f4WpAhV4
+   * @param s1
+   * @param s2
+   * @param s3
+   * @return
+   */
+  public static boolean dpSolution(String s1, String s2, String s3) {
+    if (s1.length() + s2.length() != s3.length()) {
+      return false;
+    }
+
+    boolean dp[][] = new boolean[s1.length()+1][s2.length()+1];
+
+    dp[0][0] = true;
+
+    for (int i=1; i<s1.length()+1; i++) {
+      if (s1.charAt(i-1) == s3.charAt(i-1)) {
+        dp[i][0] = true;
+      } else {
+        dp[i][0] = false;
+      }
+    }
+
+    for (int j=1; j<s2.length()+1; j++) {
+      if (s1.charAt(j-1) == s3.charAt(j-1)) {
+        dp[0][j] = true;
+      } else {
+        dp[0][j] = false;
+      }
+    }
+
+    for (int i=1; i< s1.length()+1; i++) {
+      for (int j=1; j<s2.length()+1; j++) {
+
+
+        if (s1.charAt(i-1) == s3.charAt(i+j-1) && s2.charAt(j-1) != s3.charAt(i+j-1)) {
+          dp[i][j] = dp[i-1][j];
+        } else if (s2.charAt(j-1) == s3.charAt(i+j-1) && s1.charAt(i-1) != s3.charAt(i+j-1)) {
+          dp[i][j] = dp[i][j-1];
+        } else if (s1.charAt(i-1) == s3.charAt(i+j-1) && s2.charAt(j-1) == s3.charAt(i+j-1)) {
+          dp[i][j] = dp[i][j-1] || dp[i-1][j];
+        }
+      }
+    }
+
+    return dp[s1.length()][s2.length()];
+  }
+
   public static void main(String[] args) {
     String s1 = "aabcc";
     String s2 = "dbbca";
-    String s3 = "aadbbcbcac";
+    String s3 = "aabdbbcacc";
     System.out.println(isInterleave(s1,s2,s3));
   }
 }

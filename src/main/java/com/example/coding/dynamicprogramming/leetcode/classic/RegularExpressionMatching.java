@@ -16,7 +16,7 @@ public class RegularExpressionMatching {
    * @param p
    * @return
    *
-   * t[i][j] = t[i-1][j-1] if str[i] == pattern[j] || pattern[j] = '.' Here i and j are matching. So we ca remove those
+   * t[i][j] = t[i-1][j-1] if str[i] == pattern[j] || pattern[j] = '.' Here i and j are matching. So we can remove those
    * and check the pattern for rest of the strings. That is why taking value from t[i-1][j-1]
    *
    * if (str[i] != pattern[j]) t[i][j] = false
@@ -38,11 +38,11 @@ public class RegularExpressionMatching {
     /**
      * What about the first row? In other words which pattern p matches empty string s=""?
      * The answer is either an empty pattern p="" or a pattern that can represent an empty string such
-     * as p="a*", p="z*" or more interestingly a combiation of them as in p="a*b*c*".
+     * as p="a*", p="z*" or more interestingly a combination of them as in p="a*b*c*".
      * Below for loop is used to populate dp[0][j]. Note how it uses previous states by checking dp[0][j-2]
      */
-    for (int j=2; j<dp[0].length; j++) {
-        dp[0][j] = p.charAt(j-1) == '*' && dp[0][j-2];
+    for (int j=1; j < dp[0].length; j++) {
+      dp[0][j] = j > 1 && '*' == p.charAt(j-1) && dp[0][j-2];
     }
 
     for (int i=1; i<dp.length; i++) {

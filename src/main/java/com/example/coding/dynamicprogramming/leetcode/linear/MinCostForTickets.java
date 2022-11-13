@@ -20,6 +20,14 @@ import java.util.Arrays;
  */
 public class MinCostForTickets {
 
+  /**
+   * https://www.youtube.com/watch?v=YNe1fsHgEOI
+   * @param currentDay
+   * @param days
+   * @param costs
+   * @param memeoize
+   * @return
+   */
   public static int recursive(int currentDay, int[] days, int[] costs, int[] memeoize) {
 
     if (currentDay > days[days.length-1]) {

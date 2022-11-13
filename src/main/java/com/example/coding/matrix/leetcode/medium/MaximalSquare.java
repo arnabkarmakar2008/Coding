@@ -16,6 +16,10 @@ public class MaximalSquare {
    *
    * After getting the max count, just have to square it to get the max area.
    *
+   * Note : dp[i][j] represents the length of the square which lower right corner is located at (i, j).
+   * If the value of this cell is also 1, then the length of the square is the minimum of: the one above,
+   * its left, and diagonal up-left value +1. Because if one side is short or missing, it will not form a square.
+   *
    * @param matrix
    * @return
    */

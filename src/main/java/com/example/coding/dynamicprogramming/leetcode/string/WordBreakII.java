@@ -76,7 +76,7 @@ public class WordBreakII {
   public static void main(String[] args) {
     String input = "pineapplepenapple";
     Set<String> dictionary = new HashSet<>();
-    dictionary.add("apple");
+    dictionary.add("applo");
     dictionary.add("pen");
     dictionary.add("applepen");
     dictionary.add("pine");

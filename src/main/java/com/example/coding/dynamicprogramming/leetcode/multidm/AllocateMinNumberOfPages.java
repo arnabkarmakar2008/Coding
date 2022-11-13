@@ -21,6 +21,10 @@ public class AllocateMinNumberOfPages {
    * Now get the mid = low+high/2. Now find if by assigning mid number of pages to a student
    * if it is possible to divide the books between m students. Else calculate the mid again.
    *
+   * Allocate at least one book
+   * Allocation should be continuous
+   *
+   *
    * @param bookArray
    * @param student
    * @return
@@ -34,6 +38,10 @@ public class AllocateMinNumberOfPages {
       sumArray += pages;
     }
 
+    /**
+     * Here mid will represent max number of pages that can be allocated to a student.
+     */
+
     int ans = 0;
     int hi = sumArray;
     int low = maxElement;
@@ -41,6 +49,10 @@ public class AllocateMinNumberOfPages {
     while (low <= hi) {
       int mid = (low+hi)/2;
 
+      /**
+       * Check if max pages that can be allocated to a student is "mid", is it possible to divided
+       * books between students.
+       */
       if (findIfPossible(mid, bookArray, student)) {
         ans = mid;
         hi = mid-1;

@@ -24,20 +24,27 @@ public class PathSumII {
   }
 
   private static void findPaths(Node root, int targetSum, ArrayList<Integer> currentList, List<List<Integer>> paths) {
-
     if (root == null) {
       return;
     }
 
-    currentList.add(root.key);
     if (targetSum == root.key && root.left == null && root.right == null) {
-      paths.add(currentList);
+      currentList.add(root.key);
+      paths.add(new ArrayList<>(currentList));
       return;
     }
 
-    //We need new list to make sure we are not passing same list in recursive calls....
-    findPaths(root.left, targetSum - root.key, new ArrayList<>(currentList), paths);
-    findPaths(root.right, targetSum - root.key, new ArrayList<>(currentList), paths);
+    currentList.add(root.key);
+    //Note how we have to backtrack before calling right subtree
+    if (root.left != null) {
+      findPaths(root.left, targetSum - root.key, currentList, paths);
+      currentList.remove(currentList.size()-1);
+    }
+
+    if (root.right != null) {
+      findPaths(root.right, targetSum - root.key, currentList, paths);
+      currentList.remove(currentList.size()-1);
+    }
 
   }
 

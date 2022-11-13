@@ -18,7 +18,7 @@ public class HappyNumber {
 
   /**
    * https://leetcode.com/problems/happy-number/discuss/56913/Beat-90-Fast-Easy-Understand-Java-Solution-with-Brief-Explanation
-   * If we keep on adding sq of digits, it will produce same number after some point.
+   * If we keep on adding sq of digits, it will produce same number after some point if number is not happy
    * So using hashset to detect that.
    * @param n
    * @return
@@ -31,7 +31,7 @@ public class HappyNumber {
 
       while ( n > 0) {
         int rem = n % 10;
-        sqsum = rem*rem;
+        sqsum += rem*rem;
         n = n / 10;
       }
 
@@ -46,7 +46,7 @@ public class HappyNumber {
   }
 
   public static void main(String[] args) {
-    int n = 19;
-    System.out.println(isHappy(19));
+    int n = 2;
+    System.out.println(isHappy(n));
   }
 }

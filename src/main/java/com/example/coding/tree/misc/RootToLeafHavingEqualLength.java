@@ -5,6 +5,9 @@ import com.example.coding.tree.Node;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Given a binary tree, print the number of root to leaf paths having equal lengths.
+ */
 public class RootToLeafHavingEqualLength {
 
     public static void rootToLeafPath(Node root, Map<Integer, Integer> map, int pathLength) {
@@ -13,11 +16,7 @@ public class RootToLeafHavingEqualLength {
         }
 
         if (root.left == null && root.right == null) {
-            if (!map.containsKey(pathLength)) {
-                map.put(pathLength, 0);
-            }
-
-            map.put(pathLength, map.get(pathLength) + 1);
+            map.putIfAbsent(pathLength, map.getOrDefault(pathLength, 0)+1);
         }
 
         rootToLeafPath(root.left, map, pathLength+1);

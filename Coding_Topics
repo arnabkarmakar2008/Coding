@@ -12,6 +12,8 @@ A* Searchhttps://leetcode.com/problems/sliding-puzzle/
 Max-Flow, Min-Cut https://leetcode.com/problems/maximum-students-taking-exam/
 Articulation points and bridges https://leetcode.com/problems/critical-connections-in-a-network/
 
+https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P
+
 =======
 1. BFS
 2. DFS
@@ -31,7 +33,17 @@ Articulation points and bridges https://leetcode.com/problems/critical-connectio
 
 8. DSU (Union find)
 
+
+Very good playlist : : Just contain theory :: https://www.youtube.com/watch?v=DgXR2OWQnLc&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P
+
+Good analysis :: BFS vs Dijkstra :: https://www.baeldung.com/cs/graph-algorithms-bfs-dijkstra#:~:text=BFS%20calculates%20the%20shortest%20paths,same%20thing%20in%20weighted%20graphs.
+
 ==============
+**************************
+Tree Pattern List : Curated from Leetcode : https://leetcode.com/discuss/study-guide/1337373/Tree-question-pattern-oror2021-placement
+
+
+================
 Leetcode By Google Candidate :  https://docs.google.com/spreadsheets/d/1KkCeOIBwUFfKrHGGZe_6EJRCIqaM6MJBo0uSIMSD9bs/edit#gid=782922309
 https://docs.google.com/spreadsheets/d/1A2PaQKcdwO_lwxz9bAnxXnIQayCouZP6d-ENrBz_NXc/edit#gid=0
 
@@ -97,3 +109,50 @@ https://github.com/xizhengszhang/Leetcode_company_frequency/blob/master/Facebook
 ========= Post by Microsoft SDE==============
 
 https://www.linkedin.com/posts/parassaini_interview-tips-preparation-activity-6928643755113598976-asYj?utm_source=linkedin_share&utm_medium=member_desktop_web
+
+==========Leetcode Curated List======= Very Good=========
+https://leetcode.com/discuss/interview-question/2069641/the-only-lists-you-need-for-your-interview-preparation
+
+
+===========Leetcode 169 list by grind 75======
+
+https://www.techinterviewhandbook.org/grind75?weeks=26
+
+
+========== Advance Data Structures ======================
+
+https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/tutorial/
+
+
+=======Apna College========
+https://docs.google.com/spreadsheets/d/1hXserPuxVoWMG9Hs7y8wVdRCJTcj3xMBAEYUOXQ5Xag/edit#gid=0
+
+
+=======Complexity Sheet=====
+https://www.bigocheatsheet.com/
+
+Online Draw ::
+https://excalidraw.com/#room=a46a1c4cdf58fdf153dd,EwyGFc6KMmV0mZRJCD25ZA
+
+
+
+
+=====Revise ======
+Graph - 5th Nov
+Tree - 7th Nov
+Matrix
+DP
+Math
+Greedy
+Backtracking
+Two pointer
+Sliding window - 9th Nov
+Trie
+Binary search
+Sorting
+String
+Heap - 10th Nov
+Srack
+Queue
+Linkedlist
+Array

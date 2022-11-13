@@ -19,7 +19,7 @@ public class MergeTwoBinaryTreeRecursive {
         }
 
         if (root2 == null) {
-            return root2;
+            return root1;
         }
 
         root1.key = root1.key + root2.key;

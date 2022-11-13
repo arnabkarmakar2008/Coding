@@ -15,7 +15,7 @@ public class SortTheMatrixDiagonally {
 
   public static int[][] diagonalSort(int[][] mat) {
 
-    //Note : Elements falling on the same diagnoal have same i-j value. So use i-j as the
+    //Note : Elements falling on the same diagonal have same i-j value. So use i-j as the
     //index of map.
 
     Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();

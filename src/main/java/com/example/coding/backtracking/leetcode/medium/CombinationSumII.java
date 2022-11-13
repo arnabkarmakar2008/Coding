@@ -14,6 +14,12 @@ import java.util.List;
  */
 public class CombinationSumII {
 
+  /**
+   * https://www.youtube.com/watch?v=IER1ducXujU
+   * @param candidates
+   * @param target
+   * @return
+   */
   public static List<List<Integer>> combinationSum(int[] candidates, int target) {
     List<Integer> elements = new ArrayList<>();
     List<List<Integer>> ans = new ArrayList<>();

@@ -5,56 +5,54 @@ import java.util.ArrayList;
 public class PartitionInKEqualSumSubSets {
 
   /**
-   * https://www.youtube.com/watch?v=rszwy53vaP0&t=40s
+   * Input: nums = [4,3,2,3,5,2,1], k = 4
+   * Output: true
+   * Explanation: It is possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.
+   *
+   *
+   * https://www.youtube.com/watch?v=mBk4I0X46oI
    * @param arr
-   * @param arrayIndx
-   * @param subSetSum
-   * @param n
    * @param k
-   * @param countOfNonEmptySets
-   * @param answerList
+   * @return
    */
-  public static void solution(int[] arr, int arrayIndx, int[] subSetSum, int n, int k, int countOfNonEmptySets, ArrayList<ArrayList<Integer>> answerList) {
+  public static boolean isSolutionPossible(int[] arr, int k) {
+    int target = 0;
+    int sum = 0;
 
-    if (arrayIndx == arr.length) {
-      if (countOfNonEmptySets == k) {
-        boolean flag = true;
-        for (int i=0; i<subSetSum.length-1; i++) {
-          if (subSetSum[i] != subSetSum[i+1]) {
-            flag = false;
-            break;
-          }
-        }
-
-        if (flag) {
-          for (ArrayList<Integer> partition: answerList) {
-            System.out.println(partition + " ");
-          }
-        }
-
-      }
-
-      return;
+    for (int num : arr) {
+      sum += num;
     }
 
-    for (int j=0; j< answerList.size(); j++) {
-      if (answerList.get(j).size() > 0) {
-        answerList.get(j).add(arr[arrayIndx]);
-        subSetSum[j] += arr[arrayIndx];
-        solution(arr, arrayIndx+1, subSetSum, n, k, countOfNonEmptySets, answerList ); // As we are not adding any new list..
-        subSetSum[j] -= arr[arrayIndx];
-        answerList.get(j).remove(answerList.get(j).size()-1);
-      } else {
-        answerList.get(j).add(arr[arrayIndx]);
-        subSetSum[j] += arr[arrayIndx];
-        solution(arr, arrayIndx+1, subSetSum, n, k, countOfNonEmptySets+1, answerList ); // As we are not adding any new list..
-        subSetSum[j] -= arr[arrayIndx];
-        answerList.get(j).remove(answerList.get(j).size()-1);
-        break;
-      }
-    }
+    target = sum/k;
+
+    return backtrack(0, 0, arr, k, target, new boolean[arr.length]);
   }
 
+  public static boolean backtrack(int index, int currentSum, int[] arr, int k, int target, boolean[] used) {
+    if (k == 0 ) {
+      return true;
+    }
+
+    if (currentSum == target) {
+      //If currentSum == target, one partition is found. So start from 0 again and search for k-1 partition
+      return backtrack(0, 0, arr, k-1, target, used);
+    }
+
+    for (int i = index; i< arr.length; i++) {
+      if (used[i] || currentSum + arr[i] > target) {
+        continue;
+      } else {
+        used[i] = true;
+        if (backtrack(i+1, currentSum + arr[i], arr, k, target, used)) {
+          return true;
+        }
+
+        used[i] = false;
+      }
+    }
+
+    return false;
+  }
 
   /**
    * Partition n elements in k subsets. If n-1 elements form k subsets then n can join any subset. If n-1 elements form
@@ -62,18 +60,11 @@ public class PartitionInKEqualSumSubSets {
    * @param args
    */
   public static void main(String[] args) {
-    int[] arr = {4,3,2,3,5,2,1};
-    int n = 7;
+    int[] arr = {8,3,2,3,5,2,1};
     int k = 4;
-    ArrayList<ArrayList<Integer>> answerList = new ArrayList<>();
+    boolean flag = isSolutionPossible(arr, k);
 
-    for (int i=0; i<k; i++) {
-      answerList.add(new ArrayList());
-    }
-
-    int[] subsetSum = new int[k];
-
-    solution(arr, 0, subsetSum, n, k, 0, answerList);
+    System.out.println(flag);
 
   }
 }

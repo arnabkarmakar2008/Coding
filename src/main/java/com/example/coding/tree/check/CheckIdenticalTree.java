@@ -2,6 +2,12 @@ package com.example.coding.tree.check;
 
 import com.example.coding.tree.Node;
 
+/**
+ * Write a function to determine if two trees are identical or not:
+ *
+ * Two trees are identical when they have the same data and the arrangement
+ * of data is also the same
+ */
 public class CheckIdenticalTree {
 
     public static boolean checkIdentical (Node root1, Node root2) {

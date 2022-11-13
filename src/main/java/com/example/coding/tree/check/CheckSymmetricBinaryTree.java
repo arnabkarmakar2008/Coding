@@ -2,6 +2,9 @@ package com.example.coding.tree.check;
 
 import com.example.coding.tree.Node;
 
+/**
+ * Given a binary tree, check whether it is a mirror of itself without recursion.
+ */
 public class CheckSymmetricBinaryTree {
 
     public static boolean checkMirror(Node a, Node b) {

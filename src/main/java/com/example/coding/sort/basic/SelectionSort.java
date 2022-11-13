@@ -8,6 +8,7 @@ package com.example.coding.sort.basic;
  *
  * Worst Case : Sorted descending order. 60 50 40 30 20 10. There are n-1, n-2 , n-3...1 comp. N(N-1)/2 = O(N^2)
  *
+ * https://www.youtube.com/watch?v=EU9FIt1t-Is
  *
  */
 

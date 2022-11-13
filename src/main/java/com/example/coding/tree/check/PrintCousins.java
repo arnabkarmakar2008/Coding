@@ -5,6 +5,10 @@ import com.example.coding.tree.Node;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Given a binary tree and a node, print all cousins of given node.
+ * Note that siblings should not be printed.
+ */
 public class PrintCousins {
 
     public static void printCousin(Node root, int key) {
@@ -65,7 +69,7 @@ public class PrintCousins {
         root1.right.left.right = new Node(9);
         root1.right.left.left = new Node(10);
 
-        printCousin(root1, 4);
+        printCousin(root1, 7);
 
     }
 }

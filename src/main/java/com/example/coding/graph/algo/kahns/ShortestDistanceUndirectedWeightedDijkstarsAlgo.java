@@ -9,16 +9,22 @@ import java.util.PriorityQueue;
 
 public class ShortestDistanceUndirectedWeightedDijkstarsAlgo {
 
+    /**
+     * Dijkstars Algo :: Find the shortest distances of all nodes from source node.
+     * @param numberOfVertices
+     * @param sourceVertex
+     * @param adjList
+     */
 
     public static void shortestPath(int numberOfVertices, GraphNode sourceVertex, ArrayList<ArrayList<GraphNode>> adjList) {
 
         // Initialize distance array
-        int key[] = new int[numberOfVertices];
+        int distance[] = new int[numberOfVertices];
         int parent[] = new int[numberOfVertices];
         boolean shortestPathArray[] = new boolean[numberOfVertices];
 
         for (int i=0; i < numberOfVertices; i++) {
-            key[i] = Integer.MAX_VALUE;
+            distance[i] = Integer.MAX_VALUE;
             parent[i] = -1;
             shortestPathArray[i] = false;
         }
@@ -30,18 +36,32 @@ public class ShortestDistanceUndirectedWeightedDijkstarsAlgo {
          */
 
         PriorityQueue<GraphNode> priorityQueue = new PriorityQueue<>();
-        key[0] = 0;
-        priorityQueue.add(new GraphNode(0, key[0]));
+        distance[0] = 0;
+        priorityQueue.add(new GraphNode(0, distance[0]));
 
-        for (int i=0; i < numberOfVertices; i++) {
+
+        while (!priorityQueue.isEmpty()) {
+            GraphNode tempNode = priorityQueue.poll();
+
+            for (GraphNode adjNode : adjList.get(tempNode.getValue())) {
+                if (distance[tempNode.getValue()] + adjNode.getValue() < distance[adjNode.getValue()]) {
+                    distance[adjNode.getValue()] = distance[tempNode.getValue()] + adjNode.getValue();
+                    priorityQueue.add(new GraphNode(adjNode.getValue(), distance[adjNode.getValue()]));
+                }
+            }
+        }
+
+
+
+        /*for (int i=0; i < numberOfVertices; i++) {
             GraphNode tempNode = priorityQueue.poll();
             shortestPathArray[tempNode.getValue()] = true;
 
             for (GraphNode adjNode : adjList.get(tempNode.getValue())) {
-                int newDistance = key[tempNode.getValue()] + adjNode.getWeight();
+                int newDistance = distance[tempNode.getValue()] + adjNode.getWeight();
 
-                if (shortestPathArray[adjNode.getValue()] == false && key[adjNode.getValue()] > newDistance) {
-                    key[adjNode.getValue()] = newDistance;
+                if (shortestPathArray[adjNode.getValue()] == false && distance[adjNode.getValue()] > newDistance) {
+                    distance[adjNode.getValue()] = newDistance;
                     parent[adjNode.getValue()] = tempNode.getValue();
                     priorityQueue.add(adjNode);
                 }
@@ -51,9 +71,9 @@ public class ShortestDistanceUndirectedWeightedDijkstarsAlgo {
         for (int i=1; i <numberOfVertices; i++) {
             System.out.println(parent[i] + "-" + i);
         }
-
+*/
         for (int i=0; i<numberOfVertices; i++) {
-            System.out.println("Shortest distance from 0 to "+i +" is " + key[i]);
+            System.out.println("Shortest distance from 0 to "+i +" is " + distance[i]);
         }
 
     }

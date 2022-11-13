@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
  * from every other nodes : Spanning tree. Minimum edge weight is min spanning tree. Min cost of edges
  */
 public class MinimumSpanningTreePrimsAlgo {
-    //Fine min weight edge of first vertex. Then move to the vertex which edge is pointing. Then find
+    //Find min weight edge of first vertex. Then move to the vertex which edge is pointing. Then find
     // the min weight edge of both vertices and select that. And this continues until all the vertices are
     //visited
 
@@ -37,7 +37,7 @@ public class MinimumSpanningTreePrimsAlgo {
                 if (mstArray[graphNode.getValue()] == false && weight[graphNode.getValue()] > graphNode.getWeight()) {
                     weight[graphNode.getValue()] = graphNode.getWeight();
                     parent[graphNode.getValue()] = tempVertex;
-                    queue.add(graphNode);
+                    queue.add(new GraphNode(graphNode.getValue(), graphNode.getWeight()));
                 }
             }
         }

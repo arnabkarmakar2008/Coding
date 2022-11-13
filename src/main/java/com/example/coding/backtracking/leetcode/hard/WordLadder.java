@@ -50,7 +50,7 @@ public class WordLadder {
         for (int i=0; i<current.length(); i++) {
           StringBuilder temp = new StringBuilder(current);
 
-          for (char c = 'a'; c<='z'; c++) { //replace each char with a-> z and see if it is presennt inn the list.
+          for (char c = 'a'; c<='z'; c++) { //replace each char with a-> z and see if it is present in the list.
             temp.setCharAt(i, c);
 
             if (temp.toString().equals(current)) {

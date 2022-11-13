@@ -7,7 +7,7 @@ import java.util.Arrays;
  * vertical square prism. You are given a 0-indexed n x n integer matrix grid where grid[r][c] represents
  * the height of the building located in the block at row r and column c.
  *
- * A city's skyline is the the outer contour formed by all the building when viewing the side of the
+ * A city's skyline is the outer contour formed by all the building when viewing the side of the
  * city from a distance. The skyline from each cardinal direction north, east, south, and west may be different.
  *
  * We are allowed to increase the height of any number of buildings by any amount (the amount can be

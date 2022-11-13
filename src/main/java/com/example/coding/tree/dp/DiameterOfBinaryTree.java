@@ -1,7 +1,12 @@
-package com.example.coding.tree.misc;
+package com.example.coding.tree.dp;
 
 import com.example.coding.tree.Node;
 
+/**
+ * https://www.youtube.com/watch?v=zmPj_Ee3B8c&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=47
+ * Aditya Verma
+ * DP on trees
+ */
 public class DiameterOfBinaryTree {
     //From a node, dia = 1 + height of left subtree + height of right subtree
     // Need to calculate dia for each node and update max
@@ -12,15 +17,20 @@ public class DiameterOfBinaryTree {
 
     public static int diameter(Node node, MaxStore maxStore) {
         if (node == null) {
-            return -1;
+            return 0;
         }
 
-        int leftHeight = diameter(node.left, maxStore);
-        int rightHeight = diameter(node.right, maxStore);
+        int leftDia = diameter(node.left, maxStore);
+        int rightDia = diameter(node.right, maxStore);
 
-        maxStore.MAX = Math.max(maxStore.MAX, (1+leftHeight+rightHeight));
+        //If current node doesn't want to form max dia, then it will pass it to its root
+        int temp = Math.max(leftDia, rightDia) + 1;
 
-        return 1 + Math.max(leftHeight, rightHeight);
+        int answer = Math.max(temp, 1 + (leftDia+rightDia));
+
+        maxStore.MAX = Math.max(maxStore.MAX, answer);
+
+        return temp;
     }
 
     public static void main(String[] args) {

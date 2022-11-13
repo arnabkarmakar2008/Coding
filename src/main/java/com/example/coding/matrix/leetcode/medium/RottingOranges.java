@@ -37,7 +37,6 @@ public class RottingOranges {
     }
 
     while (!queue.isEmpty()) {
-      ++count;
       int size = queue.size();
 
       while (size > 0 ) {
@@ -60,18 +59,11 @@ public class RottingOranges {
         size--;
 
       }
+      ++count;
 
     }
 
-
-    /**
-     * Think about that when we enter the while loop for the penultimate time, we have already marked
-     * all the orange as rotted (don't care about -1 case here), and add them into the queue,
-     * it means that when we enter the while loop in the last time, we have already polluted all oranges,
-     * but still do (count++).
-     * So we need to remove this time since all the orange are already rotted in the penultimate time.
-     */
-    return freshCount == 0 ? count-1 : -1;
+    return freshCount == 0 ? count : -1;
 
   }
 

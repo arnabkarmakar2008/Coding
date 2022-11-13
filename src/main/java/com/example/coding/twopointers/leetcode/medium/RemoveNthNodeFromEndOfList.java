@@ -17,22 +17,22 @@ public class RemoveNthNodeFromEndOfList {
     Link dummyNode = new Link(0);
     dummyNode.next = head;
 
-    Link fastPointer = null;
+    Link rightPointer = null;
 
     while (n > 0) {
-      fastPointer = head.next;
+      rightPointer = head.next;
       n--;
     }
 
-    Link slowPointer = dummyNode;
+    Link leftPointer = dummyNode;
 
-    while (fastPointer != null) {
-      fastPointer = fastPointer.next;
-      slowPointer = slowPointer.next;
+    while (rightPointer != null) {
+      rightPointer = rightPointer.next;
+      leftPointer = leftPointer.next;
     }
 
     //delete
-    slowPointer.next = slowPointer.next.next;
+    leftPointer.next = leftPointer.next.next;
 
     return dummyNode.next;
 

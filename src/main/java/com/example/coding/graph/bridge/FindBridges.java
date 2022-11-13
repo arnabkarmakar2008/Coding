@@ -5,6 +5,13 @@ import com.example.coding.graph.GraphNode;
 import java.util.ArrayList;
 
 public class FindBridges {
+
+    public static int[] parent;
+    public static int[] disc;
+    public static int[] low;
+    public static boolean[] ap;
+    public static boolean[] vis;
+
     public static int timer = 0;
     public static void findBridges(int vertex, int parentVertex, int[] low, int[] insertionTime, int[] visited, ArrayList<ArrayList<Integer>> adjList) {
         visited[vertex] = 1;
@@ -30,6 +37,55 @@ public class FindBridges {
                     }
                 } else {
                     low[vertex] = Math.min(low[vertex], insertionTime[itr]);
+                }
+            }
+        }
+    }
+
+    public static void articulationPoint(ArrayList<ArrayList<Integer>> adjList) {
+        parent = new int[adjList.size()];
+        low = new int[adjList.size()];
+        disc = new int[adjList.size()];
+        vis = new boolean[adjList.size()];
+        ap = new boolean[adjList.size()];
+
+        parent[0] = -1;
+        dfs(0, adjList);
+    }
+
+    public static void dfs(int source, ArrayList<ArrayList<Integer>> adjList) {
+        disc[source] = timer;
+        low[source] = timer;
+        timer++;
+        vis[source] = true;
+        int count = 0;
+
+        ArrayList<Integer> adjNodes = adjList.get(source);
+
+        for (int ct=0; ct < adjNodes.size(); ct++) {
+            int adjNode = adjNodes.get(ct);
+
+            if (parent[source] == adjNode) {
+                continue;
+            } else if (vis[adjNode] == true) {
+                low[source] = Math.min(low[source], disc[adjNode]);
+            } else {
+                count++;
+                parent[adjNode] = source;
+                dfs(adjNode, adjList);
+                low[source] = Math.min(low[source], low[adjNode]);
+
+                //For original source we have to add this logic
+
+                if (parent[source] == -1) {
+                    if (count >= 2) {
+                        ap[source] = true;
+                    }
+                } else {
+                    if (low[adjNode] >= disc[source]) {
+                        //source -> adjNode will be bridge
+                        ap[source] = true;
+                    }
                 }
             }
         }

@@ -5,6 +5,9 @@ import com.example.coding.tree.Node;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Given a binary tree and two level numbers ‘low’ and ‘high’, print nodes from level low to level high.
+ */
 public class PrintNodesBetween2Levels {
 
     public static void printOddLevel(Node node, int lowLevel, int highLevel) {

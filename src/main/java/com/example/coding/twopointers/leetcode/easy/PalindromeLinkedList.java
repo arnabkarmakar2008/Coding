@@ -4,6 +4,8 @@ import com.example.coding.linkedlist.main.Link;
 
 /**
  * Given the head of a singly linked list, return true if it is a palindrome.
+ *
+ * https://leetcode.com/problems/palindrome-linked-list/discuss/64501/Java-easy-to-understand
  */
 public class PalindromeLinkedList {
 

@@ -15,8 +15,10 @@ public class PrintLongestPlandromicSubstring {
     //dp array
     int[][] dp = new int[strLen][strLen];
 
+    //dp[0][2] -> String from index 0 to 2.
+
     for (int i=0; i<strLen; i++) {
-      dp[i][i] = 1; //a is a palindrome, b is a palindrome
+      dp[i][i] = 1; //a is a palindrome, b is a palindrome //All diagonal will be one.
     }
 
     //prefill dp array for 2 char

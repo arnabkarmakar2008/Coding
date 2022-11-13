@@ -17,6 +17,10 @@ package com.example.coding.matrix.leetcode.medium;
  */
 public class ColoringBorder {
 
+  /**
+   * https://www.youtube.com/watch?v=R3AJoOBVAlg&t=737s
+   */
+
   public static int[][] dir = {{0,1},{0,-1},{1,0},{-1,0}};
   public static int[][] colorBorder(int[][] grid, int row, int col, int color) {
     dfs(grid, row, col, grid[row][col]);
@@ -32,7 +36,7 @@ public class ColoringBorder {
     return grid;
   }
 
-  //Note: We have to color all connected cells. But if in the connecetd component there are cells which has
+  //Note: We have to color all connected cells. But if in the connected component there are cells which has
   // same neighbour on all 4 sides we have to exclude
   public static void dfs(int[][] grid, int row, int col, int color) {
     grid[row][col] = -color; // color cell with negative color value :: just to count visited one
@@ -52,7 +56,7 @@ public class ColoringBorder {
       // This neighbour cell is either +ve color or +ve color value. If -ve then just increase count but do not call dfs.
 
       count++;
-      // During dfs color can be -ve but that is visited. So increse count but do not call dfs.
+      // During dfs color can be -ve but that is visited. So increase count but do not call dfs.
 
       if (grid[newR][newC] == color) {
         // As positive color cell, call dfs.

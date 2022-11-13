@@ -18,6 +18,11 @@ import java.util.PriorityQueue;
  */
 public class MeetingRoomII {
 
+  /**
+   * https://www.youtube.com/watch?v=PWgFnSygweI
+   * @param intervals
+   * @return
+   */
   public static int meetingRoomRequired(int[][] intervals) {
     Arrays.sort(intervals, Comparator.comparingInt(arr -> arr[0]));
 
@@ -40,6 +45,44 @@ public class MeetingRoomII {
     }
 
     return minHeap.size();
+  }
+
+  /**
+   * https://www.youtube.com/watch?v=FdzJmTCVyJU&t=508s -- neetcode
+   *
+   * @param intervals
+   * @return
+   */
+  public static int meetingRoomRequiredNoHeap(int[][] intervals) {
+    int[] startTime = new int[intervals.length];
+    int[] endTime = new int[intervals.length];
+
+    for (int ct=0; ct < intervals.length; ct++) {
+      startTime[ct] = intervals[ct][0];
+      endTime[ct] = intervals[ct][1];
+    }
+
+    int startCounter = 0;
+    int endCounter = 0;
+
+    int roomCount = 0;
+    int maxRoomCount = 0;
+
+    while (startCounter < intervals.length) {
+      if (startTime[startCounter] > endTime[endCounter]) {
+        roomCount++;
+        startCounter++;
+      } else if (endTime[endCounter] >= startTime[startCounter]) {
+        roomCount--;
+        endCounter++;
+      }
+
+      maxRoomCount = Math.max(maxRoomCount,roomCount);
+
+
+    }
+
+    return maxRoomCount;
   }
 
   public static void main(String[] args) {

@@ -49,8 +49,8 @@ public class BFSCycleDetection {
 
     public static void main(String[] args) {
         /**
-         * We have to store node - prev node in queue. Now if for any node, if adj node is alreday visited
-         * and vistied node is not prev node thn there is cycle.
+         * We have to store node - prev node in queue. Now if for any node, if adj node is already visited
+         * and visited node is not prev node thn there is cycle.
          */
 
         ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();

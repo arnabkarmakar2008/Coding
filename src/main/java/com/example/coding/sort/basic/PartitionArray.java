@@ -11,7 +11,7 @@ public class PartitionArray {
    *
    *          7   9   4   8   3   6   2   1
    *
-   * We will have 3 region. Unknown = i -> end. Greater = j -> i . Less Equal = -> 0 -> j-1
+   * We will have 3 region. Unknown = i -> end. Greater = j -> i-1 . Less Equal = -> 0 -> j-1
    *
    * i and j both will start from 0.
    *
@@ -22,6 +22,9 @@ public class PartitionArray {
    *   i++;
    *   j++;
    * }
+   *
+   *
+   * https://www.youtube.com/watch?v=if40LxQ8_Xo&t=388s
    *
    * @param nums
    * @param pivot

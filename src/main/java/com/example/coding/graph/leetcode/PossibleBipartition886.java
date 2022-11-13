@@ -16,7 +16,12 @@ import java.util.Queue;
 public class PossibleBipartition886 {
 
 
-
+  /**
+   * https://leetcode.com/problems/possible-bipartition/discuss/1301784/Union-Find-With-Explanation-Java
+   * @param n
+   * @param dislikes
+   * @return
+   */
 
   public static boolean possibleBipartitionUnionFind(int n, int[][] dislikes) {
     UnionFind1 uf = new UnionFind1(n);
@@ -36,6 +41,18 @@ public class PossibleBipartition886 {
       if (adj.size() == 0) {
         continue;
       }
+
+      /**
+       * 2 dislikes 5 and 7.
+       *
+       * So check if 2 is in the same component of 5 and 7 then not possible.
+       * Else unionize all neighbours of 2.
+       *
+       * Iterate across all the vertices (1..n) and check if the vertex is connected with any of its neighbors
+       * 3a) In the figure above, this step is checking to see if all node 2's neighbors (5 and 7) are on the right side.
+       * 3b) If the current vertex is connected to any of it's neighbors, (5 or 7 is actually on the left side) that makes the graph NOT bipartite
+       * 3c) Unionize all of a node 2's neighbors together because they belong to the same set. This puts 5 and 7 on the right side set.
+       */
 
       //get the first neighbour
       int firstNeighbour = adj.get(0);

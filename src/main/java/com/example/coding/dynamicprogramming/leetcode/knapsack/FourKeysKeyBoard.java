@@ -19,14 +19,14 @@ public class FourKeysKeyBoard {
    * N=2   2
    * N=3   3
    * N=4   4 (1 1 1 1) 2 (1 A C V)
-   * N=5   5 (1 1 1 1 1) 4 (1 1 A C V)
+   * N=5   5 (1 1 1 1 1) 4 (1 1 A C V) 3 (1 A C V V)
    * N=6   6 (1 1 1 1 1 1) 6 (1 1 1 A C V) 6 (1 1 A C V V) 4 (1 A C V V V) = 6
    * N=7   7 (1 1 1 1 1 1 1) 8(1 1 1 1 A C V) 9(1 1 1 A C V V) 8(1 1 A C V V V) 5(1 A C V V V V) = 9
    *
    *
    * N=10  10(1 1 1 1 1 1 1 1 1 1) 7*2(1 1 1 1 1 1 1 A C V) 6*3(1 1 1 1 1 1 A C V V) 5*4(1 1 1 1 1 A C V V V) 4*5(1 1 1 1 A C V V V V) 3*6(1 1 1 A C V V V V V)
    *
-   * 7*2(1 1 1 1 1 1 1 A C V) :: We are going to what is the max print for N=7. It is 9. So aswer will be 9*2 = 18
+   * 7*2(1 1 1 1 1 1 1 A C V) :: We are going to what is the max print for N=7. It is 9. So answer will be 9*2 = 18
    * 6*3(1 1 1 1 1 1 A C V V) :: Max for N=6 = 6 So answer = 6*3 = 18
    *
    * @param n

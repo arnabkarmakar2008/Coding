@@ -5,6 +5,10 @@ import java.util.List;
 
 public class MinSubSetSum {
 
+    /**
+     * https://www.youtube.com/watch?v=SFWOSpTJOzw
+     * @param args
+     */
     public static void main(String[] args) {
         /**
          * IP : arr[] : {2,4,7}
@@ -23,21 +27,24 @@ public class MinSubSetSum {
             sum = sum + i;
         }
 
-        boolean[][] t = subset(arr, sum, 3);
+        int n = 3;
 
-        //Now 3rd row of t will say if subset with range is possible or not. Also as s1 is smaller
-        //we have to take sum/2+1;
-        int tempIndex = sum/2;
-        List<Integer> list = new ArrayList<>();
+        boolean[][] t = subset(arr, sum, n);
 
-        for (int i=0; i<=tempIndex; i++) {
-            if (t[3][i] == true)
-            list.add(i);
-        }
-        // Now have to find min of sum - 2*element of list
         int min = Integer.MAX_VALUE;
-        for (int i : list) {
-            min = Math.min(min, sum - 2*i);
+
+        //Now lets say sum =17. Now if lets say we can have subset sum =8, then other subset will be 17-8=9
+        // Abs difference = 9-8 = 1. Now if we get subset sum =9, then other sum will be8.
+        //So basically we will repeat if we go beyond sum/2;
+
+        for (int i=0; i<=sum/2; i++) {
+            if (t[n][i] == true) {
+                //subset possible
+                //subset1 sum is i
+                //subset2 sum = sum-i
+                //diff between both will be (sum-i)-i = sum - 2i
+                min = Math.min(min, sum-2*i);
+            }
         }
 
         System.out.println("Minimum :: " + min);

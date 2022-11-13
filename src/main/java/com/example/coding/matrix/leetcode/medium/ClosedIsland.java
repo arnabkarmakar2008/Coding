@@ -18,7 +18,6 @@ public class ClosedIsland {
         if (grid[i][j] == 0) {
           if (dfs(grid, i, j))
           {
-
             count++;
           }
         }
@@ -32,7 +31,6 @@ public class ClosedIsland {
     if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
       return false;
     }
-
 
     if (grid[row][col] == 1) {
       return true;

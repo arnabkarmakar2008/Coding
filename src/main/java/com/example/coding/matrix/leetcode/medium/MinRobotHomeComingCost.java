@@ -18,6 +18,27 @@ package com.example.coding.matrix.leetcode.medium;
  */
 public class MinRobotHomeComingCost {
 
+
+  /**
+   * It's a brain-teaser,
+   * all shortest paths have the same cost.
+   *
+   *
+   *
+   * From the view of row index, the best path will be go directly from start x to home x
+   * From the view of col index, the best path will be go directly from start y to home y
+   *
+   * Firstly move rows, from startPos[0] to homePos[0].
+   * Secondly move cols, from startPos[1] to homePos[1].
+   * Sum up the cost for every step.
+   *
+   *
+   * @param startPos
+   * @param homePos
+   * @param rowCosts
+   * @param colCosts
+   * @return
+   */
   public static int minCost(int[] startPos, int[] homePos, int[] rowCosts, int[] colCosts) {
     int cost = 0;
 

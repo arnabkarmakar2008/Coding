@@ -11,7 +11,7 @@ public class LongestRepeatingSubSequece {
      * AABEBCDD
      *
      * LCS = AABEBCDD. But we cannot take E ad C because they both are on the same index in both strings.
-     * i.e. E & C are not repeatig and present in the same index of both strings.
+     * i.e. E & C are not repeating and present in the same index of both strings.
      */
   }
 

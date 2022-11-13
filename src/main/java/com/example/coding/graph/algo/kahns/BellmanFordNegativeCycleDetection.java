@@ -26,12 +26,26 @@ class Node {
     }
 }
 
+
+/**
+ * Shortest path from src node to all other nodes. Dijkstras also does the same but it does not
+ * work for negative edge weight. Whereas BellmanFord works for negative edge.
+ *
+ *
+ * BF works for directed graph with +ve or -ve edges. If there is negative cycle then BF will not work.
+ * For undirected graph, covert edge to directed one. e.g 1 - 2, convert it to 1->2 and 2->1. And then compute
+ * BF. But if there is -ve edge then it will not work.
+ *
+ *
+ */
+
 public class BellmanFordNegativeCycleDetection {
     /**
      * 1. Relax all the edges N-1 times
      * if (dist[u] + weight < dist[v])
      *  dist[v] = dist[u] + weight // Do these steps for N-1 time.
      *
+     * Time complexity :: O(N-1) * O(E) Doing N-1 relaxation for E number of edges
      *
      */
 

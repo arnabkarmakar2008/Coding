@@ -30,8 +30,8 @@ public class LinkedListLoopEntryPoint {
       if (slowPointer == fastPointer) {
         //loop exists
 
-        // This is the trick to get startig point of loop.
-        // Initialize slowPointer to head again and increament slow and fast both by 1.
+        // This is the trick to get starting point of loop.
+        // Initialize slowPointer to head again and increment slow and fast both by 1.
         slowPointer = head;
 
         while (slowPointer != fastPointer) {

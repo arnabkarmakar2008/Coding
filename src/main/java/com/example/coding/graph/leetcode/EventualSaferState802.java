@@ -1,7 +1,6 @@
 package com.example.coding.graph.leetcode;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class EventualSaferState802 {
     /**
@@ -21,51 +20,75 @@ public class EventualSaferState802 {
      * Every path starting at nodes 2, 4, 5, and 6 all lead to either node 5 or 6.
      *
      *
-     * Note : If there is cycle, then all nodes which are on cycle not part of safer nodes.
-     * So have to detect cycles and have to find nodes which are on cycle. Non-cycle nodes are safer
      */
 
 
-    public static Set<Integer> cycleNodes = new HashSet<>();
-    public static Set<Integer> safeNodes = new HashSet<>();
-    public static Set<Integer> visitedNodes = new HashSet<>();
+    /**
+     * https://www.youtube.com/watch?v=4ymVOCiQBtw
+     *
+     * Here we have to find cycle in a directed graph. Also node which are part of cycle are not safe.
+     * Else all are safe nodes.
+     * So we
+     *
+     */
+    public static List<Integer> eventualSafeNodes(int[][] graph) {
 
-    public static boolean dfsNotCycle(int node, int[][] graph, Set<Integer> visitedNodes) {
-        if (cycleNodes.contains(node)) {
-            return false; //node is part of cycle already
+        int n = graph.length;
+        ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
+
+        for (int ct=0; ct <n; ct++) {
+            adjList.add(new ArrayList<>());
+            adjList.get(ct).add(graph[ct][0]);
+            adjList.get(ct).add(graph[ct][1]);
         }
 
-        if (safeNodes.contains(node)) {
-            return true; // safe node
-        }
+        int[] visited = new int[n];
+        int[] dfsVisited = new int[n];
+        boolean[] partOfCycle = new boolean[n];
 
-        if (visitedNodes.contains(node)) { //we have determined node is in cycle
-            cycleNodes.add(node);
-            return false;
-        }
-
-        visitedNodes.add(node);
-
-        //Check child nodes
-        for (int i : graph[node]) {
-            if (!dfsNotCycle(i, graph, visitedNodes)) {
-                cycleNodes.add(i);
-                return false;
+        for (int vertex = 0; vertex < n; vertex++) {
+            if (visited[vertex] != 1) {
+                dfsCycleCheck(vertex, adjList, visited, dfsVisited, partOfCycle);
             }
         }
 
-        safeNodes.add(node);
-        return true;
+        List<Integer> resultList = new ArrayList<>();
+
+        for (int ct=0; ct < partOfCycle.length; ct++) {
+            if (!partOfCycle[ct]) {
+                resultList.add(ct);
+            }
+        }
+        return resultList;
+    }
+
+    private static boolean dfsCycleCheck(int vertex, ArrayList<ArrayList<Integer>> adjList, int[] visited, int[] dfsVisited,
+                                         boolean[] partOfCycle) {
+        visited[vertex] = 1;
+        dfsVisited[vertex] = 1;
+
+        for (Integer itr : adjList.get(vertex)) {
+            if (visited[itr] != 1) {
+                if (dfsCycleCheck(itr, adjList, visited, dfsVisited,partOfCycle)) {
+                    partOfCycle[vertex] = true; //We are starting from source. So source is part of cycle
+                    return true;
+                }
+            } else if (dfsVisited[itr] == 1) { //both visited and dfsVisited are 1, then there is cycle
+                partOfCycle[vertex] = true;
+                return true;
+            }
+        }
+
+        dfsVisited[vertex] = 0;
+        return false;
     }
 
     public static void main(String[] args) {
         int[][] graph = {{1,2},{2,3},{5},{0},{5},{},{}};
 
-        for (int node=0; node<graph.length; node++) {
-            if (dfsNotCycle(node, graph, visitedNodes)) {
-                System.out.println(node);
-            }
-        }
+        List<Integer> list = eventualSafeNodes(graph);
+
+        System.out.println(list);
     }
 
 

@@ -15,12 +15,7 @@ public class CountOfAnagram {
         Map<Character, Integer> countMap = new HashMap<>();
 
         for (char c : ana) {
-            if (countMap.containsKey(c)) {
-                int count = countMap.get(c);
-                countMap.put(c, count+1);
-            } else {
-                countMap.put(c, 1);
-            }
+            countMap.put(c, countMap.getOrDefault(c, 0) + 1);
         }
 
         int counter = countMap.size();

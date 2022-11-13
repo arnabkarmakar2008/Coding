@@ -19,18 +19,25 @@ public class HIndexII {
    * @param citations
    * @return
    */
-  public static int hIndex(int[] citations) {
-    int len = citations.length;
 
-    int index = 0;
-
-    while (index <= len && (len-index) > citations[index]) {
-      index++;
-    }
-
-    return len-index;
-  }
-
+  /**
+   * https://www.youtube.com/watch?v=CjKJDloMnwE
+   *
+   * 1 5 6 7 8
+   *
+   * low = 1 high = 8 mid = 6. 6 is greater than n-2. So 6 is not optimal. Move high = mid-1
+   * low = 1 high = 5 mid = 0. n-0 > 1. So 1 is valid answer. We need max value. So go to higher side. low = mid+1
+   * low = 5 high=5 mid = 5. 5 is greater than n-1. So 6 is not optimal. Move high = mid-1.
+   * low = 5 high=1 loop will exit.
+   *
+   * Now 1 is the valid answer but 5 is not. So possible answer could be 1,2,3,4. So answer will be
+   * number of elements on the right side of array. So we have to return n-low;
+   *
+   * https://www.youtube.com/watch?v=CjKJDloMnwE&t=27s
+   *
+   * @param citations
+   * @return
+   */
   public static int hIndexBinarySearch(int[] citations) {
     int low = 0;
     int high = citations.length-1;

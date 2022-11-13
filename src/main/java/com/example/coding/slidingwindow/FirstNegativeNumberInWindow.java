@@ -20,6 +20,7 @@ public class FirstNegativeNumberInWindow {
             if (intArray[windowEnd] < 0 ) {
                 list.addLast(intArray[windowEnd]);
             }
+
             if (windowEnd - windowStart + 1 < subArraySize) {
                 windowEnd ++;
             } else if (windowEnd - windowStart + 1 == subArraySize) {

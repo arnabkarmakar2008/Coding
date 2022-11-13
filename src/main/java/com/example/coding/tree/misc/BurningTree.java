@@ -1,7 +1,13 @@
 package com.example.coding.tree.misc;
 
 import com.example.coding.tree.Node;
-//https://www.youtube.com/watch?v=dtBj2A_7JOk&t=148s
+
+/**
+ * https://www.youtube.com/watch?v=2r5wLmQfD6g
+ *
+ *
+ * See solution from here. Striver.
+ */
 public class BurningTree {
 
   public static int maxTime = 0;

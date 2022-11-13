@@ -15,9 +15,9 @@ public class MinSwapToIncreasingSubSeq {
 
 
   /**
-   * Case 1: a[i] > a[i-1] & b[i] > b[i-1] both arrays are strictly increaseing. So no swap at ith and i-1th position.
+   * Case 1: a[i] > a[i-1] & b[i] > b[i-1] both arrays are strictly increasing. So no swap at ith and i-1th position.
    * noSwap[i] = noSwap[i-1] //As we do not have to swap i-1, so cost will be same as i-1.
-   * swap[i] = swap[i-1] + 1 // If we are swapping, ith index then we have to swap i-1 also to keep it increasring.
+   * swap[i] = swap[i-1] + 1 // If we are swapping, ith index then we have to swap i-1 also to keep it increasing.
    *                         // cost will be cost of i-1th +1
    *
    * Case 2 : a[i] > b[i-1] & b[i] > a[i-1] // We have to swap either ith elemets or i-1th elements.

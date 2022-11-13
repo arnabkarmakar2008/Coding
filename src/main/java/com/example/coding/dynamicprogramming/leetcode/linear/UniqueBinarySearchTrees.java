@@ -32,7 +32,7 @@ public class UniqueBinarySearchTrees {
     dp[0] = 1;
     dp[1] = 1;
 
-    for (int i=2; i<=number; i++) {
+    for (int i=2; i<dp.length; i++) {
       int left = 0;
       int right = i-1;
 

@@ -18,7 +18,8 @@ public class MaximumMatrixSum {
     If the remaining negative numbers are separated from each other, just swap their negative signs with the adjacent positive number until they are adjacent to each other, and then you can remove 2 negative signs at a time
     If there is an odd amount of negative sign, there will be a negative sign in the end, and we can move that negative sign to the smallest number in the matrix (by swapping as above)
 
-    So, if the number of negative signs is even, the answer is the sum of the absolute value of all elements. If it is odd, we will have to minus 2 times the number with smallest absolute value (for we have to change + sign to -) to get the answer:
+    So, if the number of negative signs is even, the answer is the sum of the absolute value of all elements.
+    If it is odd, we will have to minus 2 times the number with smallest absolute value (for we have to change + sign to -) to get the answer:
          */
     int min = Integer.MAX_VALUE;
     int negativeCount = 0;

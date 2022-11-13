@@ -6,7 +6,8 @@ package com.example.coding.matrix.leetcode.medium;
  * A move consists of walking from one land cell to another adjacent (4-directionally) land cell
  * or walking off the boundary of the grid.
  *
- * Return the number of land cells in grid for which we cannot walk off the boundary of the grid in any number of moves.
+ * Return the number of land cells in grid for which we cannot walk off the boundary
+ * of the grid in any number of moves.
  */
 public class NumberOfEnclaves {
   //Note : DFS Problem. Start DFS from boundary cells value 1. Change those to 0. Then count number of

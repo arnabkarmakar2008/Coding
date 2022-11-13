@@ -48,12 +48,29 @@ public class ScrambledString {
 
         int n = a.length();
         boolean flag = false;
+        /**
+         * String can be broken from 1 to n-1.
+         * great can be broken as [g, reat], [gr,eat], [gre,at],[grea,t]
+         */
         for (int i=1; i< n-1; i++) {
 
-            boolean condn1 = (solve(a.substring(0,i), b.substring(n-i, i)) == true &&
-                    solve(a.substring(i,n-i), b.substring(0, n-i)) == true);
+            /**
+             * great :: gr eat
+             * eatgr :: eat gr
+             * Lets say we are break at index 2.
+             * Then we have first section of a with last section of b and last section of a with first
+             * section of b
+             *
+             */
+
+            //If there is swap
+            boolean condn1 = (solve(a.substring(0,i), b.substring(n-i)) == true &&
+                    solve(a.substring(i), b.substring(0, n-i)) == true);
+
+
+            //If there is no swap
             boolean condn2 = (solve(a.substring(0,i), b.substring(0, i)) == true &&
-                    solve(a.substring(i,n-i), b.substring(i, n-i)) == true);
+                    solve(a.substring(i), b.substring(i)) == true);
 
             if (condn1 || condn2) {
                 flag = true;

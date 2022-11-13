@@ -13,7 +13,7 @@ package com.example.coding.matrix.leetcode.easy;
  *
  * Return the total area of all three projections.
  */
-public class ProjectionOf3DShapes {
+public class  ProjectionOf3DShapes {
 
   /**
    * Note : Top = If cell value if not zero then area is 1.

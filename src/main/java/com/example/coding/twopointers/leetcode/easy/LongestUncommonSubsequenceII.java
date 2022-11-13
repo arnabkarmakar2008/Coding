@@ -3,6 +3,14 @@ package com.example.coding.twopointers.leetcode.easy;
 /**
  * Given two strings a and b, return the length of the longest uncommon subsequence between a and b.
  * If the longest uncommon subsequence does not exist, return -1.
+ *
+ * An uncommon subsequence between an array of strings is a string that is a subsequence of one string
+ * but not the others.
+ *
+ * A subsequence of a string s is a string that can be obtained after deleting any number of characters from s.
+ *
+ * For example, "abc" is a subsequence of "aebdc" because you can delete the underlined characters
+ * in "aebdc" to get "abc". Other subsequences of "aebdc" include "aebdc", "aeb", and "" (empty string).
  */
 public class LongestUncommonSubsequenceII {
 
@@ -11,24 +19,20 @@ public class LongestUncommonSubsequenceII {
   }
 
   /**
-   * Determine if String a is subsequence of String b or not
-   * @param a
+   * https://leetcode.com/problems/longest-uncommon-subsequence-i/discuss/99434/Read-and-think-before-coding-Clean-and-clear-Java-solution
    * @param b
    * @return
    */
-  public static boolean isSubsequence(String a, String b) {
-    int firstCounter = 0;
-    int secondCounter = 0;
+  public static int isSubsequence(String a, String b) {
+    //Length of the longest string will be max uncommon subsequence
+    int aLength = a.length();
+    int bLength = b.length();
 
-    while (firstCounter < a.length() && secondCounter < b.length()) {
-      if (a.charAt(firstCounter) == b.charAt(secondCounter)) {
-        firstCounter++;
-      }
-
-      secondCounter++;
+    if (a.equals(b)) {
+      return -1;
+    } else {
+      return Math.max(aLength, bLength);
     }
-
-    return firstCounter == a.length();
   }
 
 

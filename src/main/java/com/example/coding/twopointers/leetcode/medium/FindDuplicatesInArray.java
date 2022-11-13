@@ -24,7 +24,7 @@ public class FindDuplicatesInArray {
    *
    * Floyds Algo : Use fast and slow pointer. When fast == slow, assign fast/slow = head and move both pointer by 1.
    * When equal that will be duplicate element. And duplicate will occur before loop starting point.
-   * Loop starting point will have more than one incoming edge from repeating elemet.
+   * Loop starting point will have more than one incoming edge from repeating element.
    *
    * Note :::: This will not work if element start from 0.
    * @param nums

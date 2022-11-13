@@ -1,50 +1,48 @@
 package com.example.coding.matrix.leetcode.medium;
 
+/**
+ * In a gold mine grid of size m x n, each cell in this mine has an integer representing
+ * the amount of gold in that cell, 0 if it is empty.
+ *
+ * Return the maximum amount of gold you can collect under the conditions:
+ *
+ * Every time you are located in a cell you will collect all the gold in that cell.
+ * From your position, you can walk one step to the left, right, up, or down.
+ * You can't visit the same cell more than once.
+ * Never visit a cell with 0 gold.
+ * You can start and stop collecting gold from any position in the grid that has some gold.
+ */
 public class PathWithMaxGold {
-
+  private static int result = Integer.MIN_VALUE;
   public static int getMaximumGold(int[][] grid) {
     int maxPath = Integer.MIN_VALUE;
     boolean[][] visited = new boolean[grid.length][grid[0].length];
     for (int i=0; i<grid.length;i++) {
       for (int j=0; j<grid[0].length;j++) {
-        if (grid[i][j] != 0) {
-          int sumPath = maxPath(grid, i, j, new boolean[grid.length][grid[0].length]);
-          maxPath = Math.max(maxPath, sumPath);
-        }
+        maxPath(grid, i, j, 0);
       }
-    }
-    return maxPath;
+    }//
+    return result;
   }
 
-  public static int maxPath(int[][] grid, int row, int col, boolean[][] visited) {
-    if (grid[row][col] ==0) {
-      return 0;
+  public static void maxPath(int[][] grid, int row, int col, int sum) {
+
+    if (row <0 || col < 0 || row >= grid.length || col >= grid[0].length ||
+    grid[row][col] == 0) {
+      result = Math.max(result, sum);
+      return;
     }
 
-    visited[row][col] = true;
-    grid[row][col] += 1000;
-    int leftMax = Integer.MIN_VALUE;
-    int rightMax =  Integer.MIN_VALUE;
-    int topMax =  Integer.MIN_VALUE;
-    int bottomMax =  Integer.MIN_VALUE;
+    int cellVal = grid[row][col];
+    grid[row][col] = 0; //to mark visited
 
-    if (row-1 >=0 && visited[row-1][col] == false) {
-      topMax = maxPath(grid, row-1, col, visited);
-    }
+    maxPath(grid, row+1, col, sum + cellVal);
+    maxPath(grid, row-1, col, sum + cellVal);
+    maxPath(grid, row, col+1, sum + cellVal);
+    maxPath(grid, row, col-1, sum + cellVal);
 
-    if (row+1 < grid.length && visited[row+1][col] == false) {
-      bottomMax = maxPath(grid, row+1, col, visited);
-    }
+    grid[row][col] = cellVal; //backtracking
 
-    if (col-1 > 0 && visited[row][col-1] == false) {
-      leftMax = maxPath(grid, row, col-1, visited);
-    }
-
-    if (col+1 < grid[0].length && visited[row][col+1] == false) {
-      rightMax = maxPath(grid, row, col+1, visited);
-    }
-
-    return grid[row][col] + Math.max(Math.max(Math.max(topMax,bottomMax), leftMax), rightMax);
   }
 
   public static void main(String[] args) {

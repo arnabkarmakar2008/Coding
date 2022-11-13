@@ -66,7 +66,6 @@ public class MatrixDiagonalTravel {
 
       if (r+c %2 == 0) {
         //Even diagonal. Will go up
-
         if (r-1 >=0 && c+1 < cols) {
           r = r-1;
           c = c+1;
@@ -77,7 +76,6 @@ public class MatrixDiagonalTravel {
         }
       } else {
         //Odd diagonal..Will do down
-
         if (r+1 < rows && c-1 >=0 ) {
           r = r+1;
           c = c-1;

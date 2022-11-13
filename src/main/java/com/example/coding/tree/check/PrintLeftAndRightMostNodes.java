@@ -5,6 +5,11 @@ import com.example.coding.tree.Node;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Given a Binary Tree, Print the corner nodes at each level.
+ * The node at the leftmost and the node at the rightmost.
+ * For example, output for following is 15, 10, 20, 8, 25.
+ */
 public class PrintLeftAndRightMostNodes {
 
 

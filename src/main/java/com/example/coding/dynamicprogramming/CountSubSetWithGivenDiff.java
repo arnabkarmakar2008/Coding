@@ -11,7 +11,7 @@ public class CountSubSetWithGivenDiff {
          * S1 + S2 = sum(arr)
          * s1 - s2 = diff
          * ------------------
-         * s1 = sum(arr) + diff / 2
+         * s1 = [sum(arr) + diff] / 2
          *
          * s1 = 29 + 5 /2 = 17
          */

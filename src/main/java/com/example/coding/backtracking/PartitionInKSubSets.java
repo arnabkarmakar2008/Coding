@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 public class PartitionInKSubSets {
 
-  public static void solution(int i, int n, int k, int countOfNonEmptySets, ArrayList<ArrayList<Integer>> answerList) {
+  /**
+   * https://www.youtube.com/watch?v=TvvGj1FtHIk&t=1606s
+   * @param index
+   * @param n
+   * @param k
+   * @param countOfNonEmptySets
+   * @param answerList
+   */
+  public static void solution(int index, int n, int k, int countOfNonEmptySets, ArrayList<ArrayList<Integer>> answerList) {
 
-    if (i > n) {
+    if (index > n) {
       if (countOfNonEmptySets == k) {
         for (ArrayList<Integer> list : answerList) {
           System.out.println(list);
@@ -19,12 +27,12 @@ public class PartitionInKSubSets {
 
     for (int j=0; j< answerList.size(); j++) {
       if (answerList.get(j).size() > 0) {
-        answerList.get(j).add(i);
-        solution(i+1, n, k, countOfNonEmptySets, answerList ); // As we are not adding any new list..
+        answerList.get(j).add(index);
+        solution(index+1, n, k, countOfNonEmptySets, answerList ); // As we are not adding any new list..
         answerList.get(j).remove(answerList.get(j).size()-1);
       } else {
-        answerList.get(j).add(i);
-        solution(i+1, n, k, countOfNonEmptySets+1, answerList );
+        answerList.get(j).add(index);
+        solution(index+1, n, k, countOfNonEmptySets+1, answerList );
         answerList.get(j).remove(answerList.get(j).size()-1);
         break;
       }

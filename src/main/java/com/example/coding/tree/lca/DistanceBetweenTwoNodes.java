@@ -2,6 +2,11 @@ package com.example.coding.tree.lca;
 
 import com.example.coding.tree.Node;
 
+/**
+ * Find the distance between two keys in a binary tree, no parent pointers are given.
+ * The distance between two nodes is the minimum number of edges to be traversed to reach one node from
+ * another.
+ */
 public class DistanceBetweenTwoNodes {
     /**
      * Dist(n1, n2) = Dist(root, n1) + Dist(root, n2) - 2*Dist(root, lca)
@@ -67,6 +72,7 @@ public class DistanceBetweenTwoNodes {
             return dist;
         }
 
+        //If k1 is the LCA of k2, then d2 will be -1. So in that case get distance between k1 and k2.
         if (d1 != -1) {
             dist = findLevel(lca, k2, 0);
             return dist;

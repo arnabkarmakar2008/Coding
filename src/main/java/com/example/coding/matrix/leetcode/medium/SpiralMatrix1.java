@@ -3,6 +3,9 @@ package com.example.coding.matrix.leetcode.medium;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Given an m x n matrix, return all elements of the matrix in spiral order.
+ */
 public class SpiralMatrix1 {
 
   public static List<Integer> spiralOrder(int[][] matrix) {

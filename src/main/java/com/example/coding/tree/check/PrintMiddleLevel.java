@@ -2,10 +2,15 @@ package com.example.coding.tree.check;
 
 import com.example.coding.tree.Node;
 
+/**
+ * Given a perfect binary tree, print nodes of middle level without computing its height.
+ * A perfect binary tree is a binary tree in which all interior nodes have two children and
+ * all leaves have the same depth or same level.
+ */
 public class PrintMiddleLevel {
     //Slow and fast pointer
     public static void print(Node a, Node b) {
-        if (a== null || b == null) {
+        if (a == null || b == null) {
             return;
         }
 

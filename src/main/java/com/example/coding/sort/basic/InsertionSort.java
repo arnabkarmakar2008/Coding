@@ -21,7 +21,7 @@ public class InsertionSort {
    * ... 2 needs 5 comparisons. So total we need 1+2+3+4+5 = 15 1+2+3+4+(N-1) = N*(N-1)/2 = N^2 -N = O(N^2)
    *
    * Average = O(N^2)
-   *
+   * https://www.youtube.com/watch?v=MMt2x6an_i8 Pepcoding
    *
    * @param nums
    */

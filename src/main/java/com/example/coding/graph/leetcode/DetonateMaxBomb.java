@@ -54,6 +54,6 @@ public class DetonateMaxBomb {
         int changeinX = a[0] - b[0];
         int changeinY = a[1] - b[1];
 
-        return changeinX*changeinX + changeinY*changeinY <= a[2]*a[2];
+        return changeinX*changeinX + changeinY*changeinY <= a[2]*b[2];
     }
 }

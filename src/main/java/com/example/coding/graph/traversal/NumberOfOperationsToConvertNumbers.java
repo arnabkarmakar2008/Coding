@@ -21,7 +21,8 @@ public class NumberOfOperationsToConvertNumbers {
      *
      * Multiply number by 2.
      * Subtract 1 from the number.
-     * The task is to find out minimum number of operation required to convert number x into y using only above two operations. We can apply these operations any number of times.
+     * The task is to find out minimum number of operation required to convert number x into y
+     * using only above two operations. We can apply these operations any number of times.
      * Constraints:
      * 1 <= x, y <= 1000
      */

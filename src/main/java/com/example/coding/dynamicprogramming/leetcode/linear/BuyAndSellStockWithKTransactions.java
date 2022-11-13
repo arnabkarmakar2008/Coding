@@ -23,10 +23,19 @@ public class BuyAndSellStockWithKTransactions {
    *
    * X in the cell will represent, max profit on Day6 if 3 transactions are allowed.
    *
-   * Now, if 3 txns are done in Day5, then X = Y.
+   * Now, if 3 txns are done in Day5, then X = Y. (Not doing anything on last day)
    * Else if 2 txns are done on Day5, then p1 + (8(price on Day5) -3 (price on Day4))
    * Else if 2 txns are done on Day4, then p2 + (8(price on Day5) -6 (price on Day3)) ....
    * X will be max of above all combinations.
+   *
+   *
+   * i -> number on txns
+   * j -> price on jth day
+   *
+   * t[i][j] = max[ t[i][j-1],
+   *  Selling on jth day. Lets say we bought it on mth day. m -> 0...j-1
+   *  profit = price[j] - price[m] + dp[i-1][m] //doing ith transaction on jth day. So i-1th tnxs where done on mth day
+   * ]
    *
    */
 

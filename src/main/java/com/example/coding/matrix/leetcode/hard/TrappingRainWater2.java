@@ -46,7 +46,7 @@ public class TrappingRainWater2 {
         }
 
         /**
-         * If height of the neighbour cell is lower then it can hold water. So we are doing water+=.
+         * If height of the neighbour cell is lower than it can hold water. So we are doing water+=.
          * Now after computing this, pass the responsibility to the neighbour i.e. update the height of the neighbour if it is
          * lesser.
          */

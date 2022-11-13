@@ -9,7 +9,15 @@ import java.util.Stack;
 public class ShortestDistanceDirectedWeightedAcyclic {
     //Have to find toposort first. Use that same stack for calculation
 
-    public static void topoSort (int vertex, int[] visited, ArrayList<ArrayList<Pair<Integer, Integer>>> adjList, Stack<Integer> stack) {
+    /**
+     * https://www.youtube.com/watch?v=CrxG4WJotgg&list=PLgUwDviBIf0rGEWe64KWas0Nryn7SCRWw&index=17&t=1219s
+     * @param vertex
+     * @param visited
+     * @param adjList
+     * @param stack
+     */
+    public static void topoSort (int vertex, int[] visited,
+                                    ArrayList<ArrayList<Pair<Integer, Integer>>> adjList, Stack<Integer> stack) {
 
         visited[vertex] = 1;
 

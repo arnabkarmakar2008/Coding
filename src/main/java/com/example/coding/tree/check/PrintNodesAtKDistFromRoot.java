@@ -5,6 +5,11 @@ import com.example.coding.tree.Node;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Given a root of a tree, and an integer k. Print all the nodes which are at k distance
+ * from root.
+ * For example, in the below tree, 4, 5 & 8 are at distance 2 from root.
+ */
 public class PrintNodesAtKDistFromRoot {
 
     public static void printOddLevel(Node node, int distance) {

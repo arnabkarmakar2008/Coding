@@ -10,6 +10,10 @@ package com.example.coding.dynamicprogramming.leetcode.linear;
 public class PerfectSquares {
 
   /**
+   *
+   * https://www.youtube.com/watch?v=aZuQXkO0-XA&t=626s
+   *
+   *
    * n = 11
    * 0 1 2 3 4 5 6 7 8 9 10 11
    * 0 1 2 3 1 2 3 4

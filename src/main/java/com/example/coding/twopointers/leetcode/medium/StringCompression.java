@@ -18,36 +18,35 @@ package com.example.coding.twopointers.leetcode.medium;
  */
 public class StringCompression {
 
-  public static int compress(char[] chars) {
+  public static char[] compress(char[] chars) {
 
-    int left = 0;
-    int right = 0;
-    int counter = 0;
-    String str = "";
+    int index = 0;
+    int ansIndex = 0;
 
-    while (left < chars.length) {
-      if (chars[right] == chars[left]) {
-        right++;
-      } else {
-        counter = (right - left);
+    while (index < chars.length) {
+      int count = 0;
+      char currentChar = chars[index];
 
-        if (counter == 1) {
-          str = str + chars[left];
-        } else {
-          str = str + chars[left] + counter;
+      while (index < chars.length && chars[index] == currentChar) {
+        count++;
+        index++;
+      }
+
+      chars[ansIndex++] = currentChar;
+
+      if (count > 1) {
+        for (char ch : Integer.toString(count).toCharArray()) {
+          chars[ansIndex++] = ch;
         }
-
-        left = right;
-        right++;
       }
     }
-
-    return str.length();
+    return chars;
   }
 
 
   public static void main(String[] args) {
-    char[] chars = {'a', 'a', 'b', 'b', 'c'};
-    System.out.println(compress(chars));
+    char[] chars = {'a', 'a','a', 'a','a', 'a','a', 'a','a', 'a','a', 'a','a', 'a','a', 'a','a', 'a', 'b', 'b', 'c'};
+    char[] ansArray = compress(chars);
+    System.out.println(ansArray);
   }
 }
